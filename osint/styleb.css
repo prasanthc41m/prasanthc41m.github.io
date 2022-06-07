@@ -8,8 +8,8 @@ body {
   cursor: pointer;
   margin: auto;
   color: #000;
-  font-family: 'Horror Type', sans-serif, Chiller;
-  src: url('http://fonts.cdnfonts.com/css/horror-type')
+  font-family: 'Horror Type', sans-serif;
+  src: url('https://fonts.cdnfonts.com/s/33837/HorrorType.woff') format('woff');  
   font-size: 6em;
   font-weight: bold;
 }
