@@ -9,6 +9,7 @@ body {
   margin: auto;
   color: #000;
   font-family: 'Horror Type', sans-serif, Chiller;
+  src: url('http://fonts.cdnfonts.com/css/horror-type')
   font-size: 6em;
   font-weight: bold;
 }
