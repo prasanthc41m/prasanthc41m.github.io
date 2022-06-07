@@ -8,7 +8,7 @@ body {
   cursor: pointer;
   margin: auto;
   color: #000;
-  font-family: 'Horror Type', 'Creepster', cursive;;
+  font-family: 'Horror Type', 'Creepster';
   src: local('Horror Type'), url('https://fonts.cdnfonts.com/s/33837/HorrorType.woff') format('woff'); 
   font-size: 6em;
   font-weight: bold;
