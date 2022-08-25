@@ -53,7 +53,7 @@ Technical support
 INTERESTS
 
 Reading blogs, bug-hunting, creating CTF, supporting communities, etc.`;
-  var speed = 60;
+  var speed = 30;
 
   function typeItOut () {
     if (i < txt.length) {
