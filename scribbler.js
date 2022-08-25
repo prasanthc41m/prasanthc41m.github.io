@@ -13,7 +13,7 @@ var getAll = function (selector, scope) {
 if (document.getElementsByClassName('demo').length > 0) {
   var i = 0;
   var txt = `whoami
-  
+
 I’m a cybersecurity professional with 3 years of experience and 10 plus years of experience in various IT domains such as networks, systems, etc.
 
 ACHIEVEMENTS
@@ -26,10 +26,10 @@ Google Dork Description: intext:”powered by codoforum”inurl:”/user/login�
 
 Exploit Database – EDB-ID: 47876
 Codoforum 4.8.3 – Persistent Cross-Site Scripting
+
 VOLUNTEER EXPERIENCE
 
 Volunteer
-
 Kerala Police Cyberdome, 2020 – Present
 
 Chapter Leader
