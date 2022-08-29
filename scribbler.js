@@ -46,9 +46,18 @@ Microsoft Certified Systems Engineer (MCSE)
 
 CONFERENCES
 
+OWASP Kannur Chapter hosted multiple events in 2022
+OWASP Kannur Chapter - Organized
+
 Cyber Security Summit 2021 “Real Time Real Attack”
 Cyberdome Kozhikode
 Technical support
+
+Retrain-2021, Adversary Emulation - A Practical Approach
+eHackify Cybersecurity Research & Trainings - Organized
+
+Redteam Security Summit-2018, Cyber Security & Hacking Conference
+Redteam Hacker Academy - Technical support
 
 INTERESTS
 
