@@ -62,7 +62,7 @@ Redteam Hacker Academy - Technical support
 INTERESTS
 
 Reading blogs, bug-hunting, creating CTF, supporting communities, etc.`;
-  var speed = 30;
+  var speed = 8;
 
   function typeItOut () {
     if (i < txt.length) {
