@@ -37,9 +37,9 @@ OWASP Kannur Chapter, 2021 – Present
 
 TRAINING AND CERTIFICATIONS
 
-EC-Council Certified Security Analyst (ECSA V9) – 2019
+EC-Council Certified Security Analyst (ECSA V9) – Feb 2019 - Feb 2025
 Certified Security Analyst (CSA) – 2018
-Apple Certified Support Professional 10.7 (ACSP) – 2012
+Apple Certified Support Professional 10.7 (ACSP) – Jul 2012
 Certified Arcos PAM Implementor (CAPI)
 Cisco Certified Network Associate (CCNA)
 Microsoft Certified Systems Engineer (MCSE)
