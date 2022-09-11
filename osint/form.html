@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<style>
+		form {
+			color: green;
+		}
+	</style>
+</head>
+
+<body>
+<h1>Event Registration</h1>
+<p>Please register to parcipate in this event.</p>
+	<!-- Eventlistis the name of the file to be downloaded-->
+	<!-- In order to run the code, the location of the
+		file "Eventlist.pdf" needs to be changed to your local
+		directory, both the HTML and downloadable file
+		needs to be present in the same directory -->
+	<form id="my-form" onsubmit="return: false;">
+		<label for="nickname">Nick Name</label>
+		<p><input type="text" name="nickname" /></p>
+		<p><label for="username">Real Name</label></p>
+		<input type="text" name="username" />
+		<input type="submit" id="submit-form"
+			value="Submit" />
+	</form>
+
+	<script>
+		const myForm = document
+			.querySelector("#my-form");
+
+		const submitForm = document
+			.querySelector("#submit-form");
+
+		submitForm.addEventListener("click", () => {
+
+			// Creating element to download pdf
+			var element = document.createElement('a');
+
+			// Setting the path to the pdf file
+			element.href = 'Eventlist.pdf';
+
+			// Name to display as download
+			element.download = 'Eventlist.pdf';
+
+			// Adding element to the body
+			document.documentElement.appendChild(element);
+
+			// Above code is equivalent to
+			// <a href="path to file" download="download name"/>
+
+			// Trigger the file download
+			element.click();
+
+			// Remove the element from the body
+			document.documentElement.remove(element);
+
+			// Submit event, to submit the form
+			myForm.submit();
+		});
+	</script>
+</body>
+
+</html>
