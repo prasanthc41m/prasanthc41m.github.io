@@ -18,7 +18,7 @@ A seasoned and accomplished cybersecurity professional with over a decade of exp
 
 Achievements:
 
-- Contributed to the finding and mitigation of a critical vulnerability (XSS) in Codologic's forum application, Codoforum and recognized by The MITRE Corporation (CVE-2020-5842)
+- Contributed to the identification and mitigation of a critical vulnerability (XSS) in Codologic's forum application, Codoforum and recognized by The MITRE Corporation (CVE-2020-5842)
 - Credited for discovering cross-site scripting (XSS) vulnerabilities in Codoforum 4.8.3, which were recognized by Exploit Database (GHDB-ID: 5689 and EDB-ID: 47876)
 - Published finding on Portswigger Web Security's website on January 13, 2020 titled "Codoforum software patched against stored XSS vulnerability" , demonstrating expertise in web security
 
