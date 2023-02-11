@@ -14,53 +14,39 @@ if (document.getElementsByClassName('demo').length > 0) {
   var i = 0;
   var txt = `whoami
 
-I’m a cybersecurity professional with 3 years of experience and 10 plus years of experience in various IT domains such as networks, systems, etc.
+A seasoned and accomplished cybersecurity professional with over a decade of experience in the IT industry. With 3 years of dedicated experience in cybersecurity and a proven track record of identifying and reporting vulnerabilities, I have the skills, knowledge, and drive to tackle complex security challenges. My expertise in systems, networks, and security combined with my certifications and volunteer work demonstrates my commitment to staying current in the ever-evolving field of cybersecurity.
 
-ACHIEVEMENTS
+Achievements:
 
-The MITRE Corporation – CVE-2020-5842
-Codoforum 4.8.3 allows XSS in the user registration page
+- Contributed to the mitigation of a critical vulnerability in The MITRE Corporation (CVE-2020-5842)
+- Credited for discovering multiple cross-site scripting (XSS) vulnerabilities in Codoforum 4.8.3, which were recognized by Exploit Database (GHDB-ID: 5689 and EDB-ID: 47876)
 
-Exploit Database – GHDB-ID: 5689
-Google Dork Description: intext:”powered by codoforum”inurl:”/user/login”
+Volunteer Experience:
 
-Exploit Database – EDB-ID: 47876
-Codoforum 4.8.3 – Persistent Cross-Site Scripting
+- Volunteer at Kerala Police Cyberdome (2020 - Present)
+- Chapter Leader at OWASP Kannur Chapter (2021 - Present)
 
-VOLUNTEER EXPERIENCE
+Training and Certifications:
 
-Volunteer
-Kerala Police Cyberdome, 2020 – Present
+- EC-Council Certified Security Analyst (ECSA V9) - Feb 2019 - Feb 2025
+- Certified Security Analyst (CSA) - 2018
+- Apple Certified Support Professional 10.7 (ACSP) - Jul 2012
+- Certified Arcos PAM Implementor (CAPI)
+- Cisco Certified Network Associate (CCNA)
+- Microsoft Certified Systems Engineer (MCSE)
 
-Chapter Leader
-OWASP Kannur Chapter, 2021 – Present
+Conferences:
 
-TRAINING AND CERTIFICATIONS
+- Organized multiple events as a Chapter Leader at OWASP Kannur Chapter in 2022
+- Provided technical support at the Cyber Security Summit 2021 "Real Time Real Attack" hosted by Cyberdome Kozhikode
+- Organized Retrain-2021, Adversary Emulation - A Practical Approach with eHackify Cybersecurity Research & Trainings
+- Provided technical support at Redteam Hacker Academy's Redteam Security Summit-2018, Cyber Security & Hacking Conference
 
-EC-Council Certified Security Analyst (ECSA V9) – Feb 2019 - Feb 2025
-Certified Security Analyst (CSA) – 2018
-Apple Certified Support Professional 10.7 (ACSP) – Jul 2012
-Certified Arcos PAM Implementor (CAPI)
-Cisco Certified Network Associate (CCNA)
-Microsoft Certified Systems Engineer (MCSE)
+Interests:
 
-CONFERENCES
+- Reading blogs and articles, bug-hunting, creating CTFs, supporting and contributing to the cybersecurity community, and more.
 
-OWASP Kannur Chapter hosted multiple events in 2022
-OWASP Kannur Chapter - Organized
-
-Cyber Security Summit 2021 “Real Time Real Attack”
-Cyberdome Kozhikode - Technical Support
-
-Retrain-2021, Adversary Emulation - A Practical Approach
-eHackify Cybersecurity Research & Trainings - Organized
-
-Redteam Security Summit-2018, Cyber Security & Hacking Conference
-Redteam Hacker Academy - Technical Support
-
-INTERESTS
-
-Reading blogs, bug-hunting, creating CTF, supporting communities, etc.`;
+  `;
   var speed = 10;
 
   function typeItOut () {
