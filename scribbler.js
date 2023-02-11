@@ -18,8 +18,9 @@ A seasoned and accomplished cybersecurity professional with over a decade of exp
 
 Achievements:
 
-- Contributed to the mitigation of a critical vulnerability in The MITRE Corporation (CVE-2020-5842)
-- Credited for discovering multiple cross-site scripting (XSS) vulnerabilities in Codoforum 4.8.3, which were recognized by Exploit Database (GHDB-ID: 5689 and EDB-ID: 47876)
+- Contributed to the finding and mitigation of a critical vulnerability (XSS) in Codologic's forum application, Codoforum and recognized by The MITRE Corporation (CVE-2020-5842)
+- Credited for discovering cross-site scripting (XSS) vulnerabilities in Codoforum 4.8.3, which were recognized by Exploit Database (GHDB-ID: 5689 and EDB-ID: 47876)
+- Published finding on Portswigger Web Security's website on 13 January 2020, demonstrating expertise in web security
 
 Volunteer Experience:
 
