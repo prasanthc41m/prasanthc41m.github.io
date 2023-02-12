@@ -51,7 +51,7 @@ Interests:
 - Reading blogs and articles, bug-hunting, creating CTFs, supporting and contributing to the cybersecurity community, and more.
 
   `;
-  var speed = 20;
+  var speed = 25;
 
   function typeItOut () {
     if (i < txt.length) {
