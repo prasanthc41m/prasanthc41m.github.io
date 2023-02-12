@@ -18,7 +18,7 @@ if (document.getElementsByClassName('demo').length > 0) {
 
 Achievements:
 
-- Contributed to the identification and mitigation of a critical vulnerability (XSS) in Codologic's forum application, Codoforum and recognized by The MITRE Corporation and Exploit Databas
+- Contributed to the identification and mitigation of a critical vulnerability (XSS) in Codologic's forum application, Codoforum and recognized by The MITRE Corporation and Exploit Database
 - Published finding on Portswigger Web Security's website on January 13, 2020 titled "Codoforum software patched against stored XSS vulnerability" , demonstrating expertise in web security
 
 - The MITRE Corporation – CVE-2020-5842
