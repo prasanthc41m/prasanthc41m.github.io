@@ -13,7 +13,8 @@ var getAll = function (selector, scope) {
 if (document.getElementsByClassName('demo').length > 0) {
   var i = 0;
   var txt = `whoami
-\   A seasoned and accomplished cybersecurity professional with over a decade of experience in the IT industry with 3 years of dedicated experience in cybersecurity.
+  
+   A seasoned and accomplished cybersecurity professional with over a decade of experience in the IT industry with 3 years of dedicated experience in cybersecurity.
 
 Achievements:
  Contributed to the identification and mitigation of a critical vulnerability (XSS) in Codologic's forum application, Codoforum
@@ -48,7 +49,7 @@ Conferences:
  Provided technical support at Redteam Hacker Academy's Redteam Security Summit-2018, Cyber Security & Hacking Conference
 
 Interests:
- Reading blogs and articles, bug-hunting, creating CTFs, supporting and contributing to the cybersecurity community, and more.\
+ Reading blogs and articles, bug-hunting, creating CTFs, supporting and contributing to the cybersecurity community, and more.
   `;
   var speed = 05;
 
