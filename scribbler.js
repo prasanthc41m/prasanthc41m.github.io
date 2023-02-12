@@ -22,7 +22,7 @@ Achievements:
 - Published finding on Portswigger Web Security's website on January 13, 2020 titled "Codoforum software patched against stored XSS vulnerability" , demonstrating expertise in web security
 
 - The MITRE Corporation – CVE-2020-5842
-#  Codoforum 4.8.3 allows XSS in the user registration page which allows to compromise administrators
+<p>  Codoforum 4.8.3 allows XSS in the user registration page which allows to compromise administrators </p>
 - Exploit Database – EDB-ID: 47876
   Codoforum 4.8.3 – Persistent Cross-Site Scripting
 - Exploit Database – GHDB-ID: 5689
