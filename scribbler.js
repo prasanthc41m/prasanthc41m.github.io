@@ -21,12 +21,9 @@ Achievements:
 - Contributed to the identification and mitigation of a critical vulnerability (XSS) in Codologic's forum application, Codoforum and recognized by The MITRE Corporation and Exploit Database
 - Published finding on Portswigger Web Security's website on January 13, 2020 titled "Codoforum software patched against stored XSS vulnerability" , demonstrating expertise in web security
 
-- The MITRE Corporation – CVE-2020-5842
-<p>  Codoforum 4.8.3 allows XSS in the user registration page which allows to compromise administrators </p>
-- Exploit Database – EDB-ID: 47876
-  Codoforum 4.8.3 – Persistent Cross-Site Scripting
-- Exploit Database – GHDB-ID: 5689
-  Google Dork Description: intext:”powered by codoforum”inurl:”/user/login”  
+- The MITRE Corporation [CVE-2020-5842] – Codoforum 4.8.3 allows XSS in the user registration page which allows to compromise administrators 
+- Exploit Database [EDB-ID: 47876] – Codoforum 4.8.3 – Persistent Cross-Site Scripting
+- Exploit Database [GHDB-ID: 5689] – Google Dork Description: intext:”powered by codoforum”inurl:”/user/login”  
 
 Volunteer Experience:
 
@@ -54,7 +51,7 @@ Interests:
 - Reading blogs and articles, bug-hunting, creating CTFs, supporting and contributing to the cybersecurity community, and more.
 
   `;
-  var speed = 10;
+  var speed = 20;
 
   function typeItOut () {
     if (i < txt.length) {
