@@ -3,6 +3,8 @@
   background: url('logo.svg') no-repeat;
   background-size: contain;
   margin: 1rem 0 0 1rem;
+  transform-origin: 0 0;
+  transform: rotate(90deg);
 }
 
 nav {
@@ -26,7 +28,7 @@ nav {
 }
 
 .hero__terminal {
-  width: 100%;
+  width: 60%;
   margin: -11rem auto 3rem auto;
   text-align: left;
   color: white;
