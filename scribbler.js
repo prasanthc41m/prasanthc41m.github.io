@@ -14,7 +14,7 @@ if (document.getElementsByClassName('demo').length > 0) {
   var i = 0;
   var txt = `whoami
 
-      A seasoned and accomplished cybersecurity professional with over a decade of experience in the IT industry. With 3 years of dedicated experience in cybersecurity and a proven track record of identifying and reporting vulnerabilities, I have the skills, knowledge, and drive to tackle complex security challenges. My expertise in systems, networks, and security combined with my certifications and volunteer work demonstrates my commitment to staying current in the ever-evolving field of cybersecurity.
+ \     A seasoned and accomplished cybersecurity professional with over a decade of experience in the IT industry. With 3 years of dedicated experience in cybersecurity and a proven track record of identifying and reporting vulnerabilities, I have the skills, knowledge, and drive to tackle complex security challenges. My expertise in systems, networks, and security combined with my certifications and volunteer work demonstrates my commitment to staying current in the ever-evolving field of cybersecurity.
 
 Achievements:
 
@@ -48,7 +48,7 @@ Conferences:
 
 Interests:
 
-- Reading blogs and articles, bug-hunting, creating CTFs, supporting and contributing to the cybersecurity community, and more.
+- Reading blogs and articles, bug-hunting, creating CTFs, supporting and contributing to the cybersecurity community, and more.\
 
   `;
   var speed = 25;
