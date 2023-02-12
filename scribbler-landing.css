@@ -5,13 +5,6 @@
   margin: 1rem 0 0 1rem;
 }
 
-.logo2 {
-  background: url('logo.svg') no-repeat;
-  background-size: contain;
-  margin: 1rem 0 0 1rem;
-  transform: rotate(-90deg);
-}
-
 nav {
   background-color: var(--bg-color);
 }
