@@ -40,6 +40,13 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
     <script>hljs.initHighlightingOnLoad();</script>
     <script src="scribbler.js"></script>
+  
+ window.addEventListener("orientationchange", function() {
+    if (window.orientation == "90" || window.orientation == "-90") {
+        //Do stuff
+    }
+}, false);
+  
   </body>
 
   <script>
@@ -48,9 +55,5 @@
       document.location = "index.html";
        }
 </script>
-
-if(screen.availHeight > screen.availWidth){
-    alert("Please use Landscape!");
-}
 
 </html>
