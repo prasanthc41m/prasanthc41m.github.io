@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html>
   <head>
@@ -11,19 +12,11 @@
       <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:300,400,600,700,800,900" rel="stylesheet">
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/railscasts.min.css">
       <link rel="stylesheet" href="scribbler-global.css">
-      <link rel="stylesheet" href="scribbler-mobile-landing.css">
+      <link rel="stylesheet" href="scribbler-landing.css">
       <link rel="shortcut icon" type="image/png" href="favicon.png">
       <link rel="author" href="#">
-      <style>
-      .portrait {
-        height: 700px;
-        writing-mode: vertical-rl;
-        transform: rotate(180deg);
-      }
-      </style>
   </head>
   <body>
-    <div class="portrait">
     <nav>
       <div class="logo"></div>
       <ul class="menu">
@@ -46,32 +39,18 @@
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
     <script>hljs.initHighlightingOnLoad();</script>
-    <script src="scribbler-mobile.js"></script>
-
-    <script>
-if (screen.width > 700) {
-     document.location = "index.html";
-}
-</script>
-  <style type="text/css">
-    #warning-message { display: none; }
-    @media only screen and (orientation:portrait){
-        #wrapper { display:none; }
-        #warning-message { display:block; }
-    }
-    @media only screen and (orientation:landscape){
-        #warning-message { display:none; }
-    }
-</style>
-
-....
-
-<div id="wrapper">
-    <!-- your html for your website -->
-</div>
-<div id="warning-message">
-    this website is only viewable in landscape mode
-</div>
-    
+    <script src="scribbler.js"></script>
   </body>
+
+  <script>
+    if (
+      screen.width > 700) {
+      document.location = "index.html";
+       }
+</script>
+
+if(screen.availHeight > screen.availWidth){
+    alert("Please use Landscape!");
+}
+
 </html>
