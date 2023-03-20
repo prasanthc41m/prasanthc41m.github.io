@@ -42,11 +42,9 @@
     <script src="scribbler.js"></script>
   
   <script>
- window.addEventListener("orientationchange", function() {
-    if (window.orientation == "90" || window.orientation == "-90") {
-        alert("Please use Landscape!");
-    }
-}, false);
+if (window.innerHeight > window.innerWidth) {
+  alert("Please use Landscape mode!!!");
+}
   </script>
   </body>
 
