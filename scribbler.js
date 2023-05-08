@@ -28,7 +28,7 @@ Achievements:
 Volunteer Experience:
 
 - Volunteer at Kerala Police Cyberdome (2020 - Present)
-- Chapter Leader at OWASP Kannur Chapter (2021 - Present)
+- Chapter Leader at OWASP Kannur Chapter (2021 - 2023)
 
 Training and Certifications:
 
