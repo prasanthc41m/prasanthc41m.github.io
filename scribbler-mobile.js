@@ -32,7 +32,7 @@ Published finding on Portswigger Web Security's website on January 13, 2020 titl
 
 Volunteer Experience:
  Volunteer at Kerala Police Cyberdome (2020 - Present)
- Chapter Leader at OWASP Kannur Chapter (2021 - Present)
+ Chapter Leader at OWASP Kannur Chapter (2021 - 2023)
 
 Training and Certifications:
  EC-Council Certified Security Analyst (ECSA V9) - Feb 2019 - Feb 2025
