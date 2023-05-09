@@ -45,4 +45,20 @@ if (screen.width > 700) {
      document.location = "index.html";
 }
 </script>
+
+<script>
+    window.onunload = refreshParent;
+    function refreshParent() {
+        window.opener.location.reload();
+    }
+</script>
+
+<script>
+// Listen for orientation changes
+window.addEventListener("orientationchange", function() {
+  // Announce the new orientation number
+  location.reload();
+}, false);
+</script>
+
 </html>
