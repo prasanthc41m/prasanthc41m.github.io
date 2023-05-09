@@ -12,9 +12,12 @@ var getAll = function (selector, scope) {
 // setup typewriter effect in the terminal demo
 if (document.getElementsByClassName('demo').length > 0) {
   var i = 0;
-  var txt = `ERROR!!! Rotate your screen.
-  
-\This website is viewable only in landscape mode.\
+  var txt = `ERROR!!
+
+Rotate your screen.
+
+\This website is viewable
+only in landscape mode.\
   `;
   var speed = 25;
 
