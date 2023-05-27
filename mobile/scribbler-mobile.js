@@ -12,7 +12,9 @@ var getAll = function (selector, scope) {
 // setup typewriter effect in the terminal demo
 if (document.getElementsByClassName('demo').length > 0) {
   var i = 0;
-  var txt = `ERROR!!
+  var txt = `show portrait-view
+  
+  ERROR!!
 
 Rotate your screen.
 
