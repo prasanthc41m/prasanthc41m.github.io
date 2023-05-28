@@ -4,7 +4,7 @@
 }
 
 html {
-  background: #222;
+  background: #000;
   overflow: hidden;
   font-family: 'BenchNine', sans-serif;
 }
@@ -214,7 +214,7 @@ html {
   transform: translateY(-50%);
   color: #fff;
   border-radius: 50px;
-  font-size: 34px;
+  font-size: 54px;
   padding: 2px 20px;
   box-shadow: 0 0 15px #000 inset;
 }
