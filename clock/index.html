@@ -24,9 +24,11 @@
 </div>
 <!-- partial -->
   <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script><script  src="./script.js"></script>
-  <script src="NoSleep.min.js"></script>
-  
-   <input type="button" id="toggle" value="Sleep" />
+
+  <!-- code open -->
+      <script src="NoSleep.min.js"></script>
+
+    <input type="button" id="toggle" value="L" />
 
     <script>
       var noSleep = new NoSleep();
@@ -37,28 +39,34 @@
         if (!wakeLockEnabled) {
           noSleep.enable(); // keep the screen on!
           wakeLockEnabled = true;
-          toggleEl.value = "Wake";
-          document.body.style.backgroundColor = "";
+          toggleEl.value = "U";
+          document.body.style.backgroundColor = "blue";
         } else {
           noSleep.disable(); // let the screen turn off.
           wakeLockEnabled = false;
-          toggleEl.value = "Sleep";
+          toggleEl.value = "L";
           document.body.style.backgroundColor = "";
         }
       }, false);
     </script>
-  <button onclick="openFullscreen();">full</button>
- <script>
-var elem = document.documentElement;
-function openFullscreen() {
-  if (elem.requestFullscreen) {
-    elem.requestFullscreen();
-  } else if (elem.webkitRequestFullscreen) { /* Safari */
-    elem.webkitRequestFullscreen();
-  } else if (elem.msRequestFullscreen) { /* IE11 */
-    elem.msRequestFullscreen();
-  }
-}
-</script>
+
+    <button id="goFS" onclick="toggleFullScreen()">F</button>
+    <script>
+    	function toggleFullScreen() {
+    	  var doc = window.document;
+    	  var docEl = doc.documentElement;
+    	  var requestFullScreen = docEl.requestFullscreen || docEl.mozRequestFullScreen || docEl.webkitRequestFullScreen || docEl.msRequestFullscreen;
+    	  var cancelFullScreen = doc.exitFullscreen || doc.mozCancelFullScreen || doc.webkitExitFullscreen || doc.msExitFullscreen;
+    	  if(!doc.fullscreenElement && !doc.mozFullScreenElement && !doc.webkitFullscreenElement && !doc.msFullscreenElement) {
+    		requestFullScreen.call(docEl);
+    	  }
+    	  else {
+    		cancelFullScreen.call(doc);
+    	  }
+    	}
+    </script>
+  <!-- code close -->
+
+  
 </body>
 </html>
