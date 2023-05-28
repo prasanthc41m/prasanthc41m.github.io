@@ -26,7 +26,7 @@
   <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script><script  src="./script.js"></script>
   <script src="NoSleep.min.js"></script>
   
-   <input type="button" id="toggle" value="Wake Lock is disabled" />
+   <input type="button" id="toggle" value="Sleep" />
 
     <script>
       var noSleep = new NoSleep();
@@ -37,27 +37,16 @@
         if (!wakeLockEnabled) {
           noSleep.enable(); // keep the screen on!
           wakeLockEnabled = true;
-          toggleEl.value = "Wake Lock is enabled";
+          toggleEl.value = "Wake";
           document.body.style.backgroundColor = "";
         } else {
           noSleep.disable(); // let the screen turn off.
           wakeLockEnabled = false;
-          toggleEl.value = "Wake Lock is disabled";
+          toggleEl.value = "Sleep";
           document.body.style.backgroundColor = "";
         }
       }, false);
     </script>
-  
-  <script>
-import NoSleep from 'nosleep.js';    
-var noSleep = new NoSleep();   
-// Enable wake lock.
-// (must be wrapped in a user input event handler e.g. a mouse or touch handler)
-document.addEventListener('click', function enableNoSleep() {
-  document.removeEventListener('click', enableNoSleep, false);
-  noSleep.enable();
-}, false);
-</script>
-  
+ 
 </body>
 </html>
