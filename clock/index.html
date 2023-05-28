@@ -23,12 +23,12 @@
   </div>
 </div>
 <!-- partial -->
-  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script><script  src="./script.js"></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script><script  src="./script.js"></script>
 
-  <!-- code open -->
-      <script src="NoSleep.min.js"></script>
-
-    <input type="button" id="toggle" value="L" />
+<!-- code open -->
+    <script src="NoSleep.min.js"></script>
+  
+    <input type="button" id="toggle" value="🔒" />
 
     <script>
       var noSleep = new NoSleep();
@@ -39,12 +39,12 @@
         if (!wakeLockEnabled) {
           noSleep.enable(); // keep the screen on!
           wakeLockEnabled = true;
-          toggleEl.value = "U";
+          toggleEl.value = "🔓";
           document.body.style.backgroundColor = "";
         } else {
           noSleep.disable(); // let the screen turn off.
           wakeLockEnabled = false;
-          toggleEl.value = "L";
+          toggleEl.value = "🔒";
           document.body.style.backgroundColor = "";
         }
       }, false);
@@ -64,7 +64,7 @@
     		cancelFullScreen.call(doc);
     	  }
     	}
-    </script>
+    </script> 
   <!-- code close -->
 
   
