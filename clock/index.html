@@ -1,73 +1,111 @@
 <!DOCTYPE html>
-<html lang="en" >
-<head>
-  <meta charset="UTF-8">
-  <title>Clock</title>
-  <link rel="stylesheet" href="./style.css">
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Digital Clock With Date</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body onload="initClock()">
+    
+    <!-- code open -->
+        <script src="NoSleep.min.js"></script>
 
-</head>
-<body>
-<!-- partial:index.partial.html -->
-<div class="clock-container">
-  <div class="clock-digital">
-    <div class="date"></div>
-    <div class="time"></div>
-    <div class="day"> </div>
-  </div>
-  <div class="clock-analog">
-    <div class="spear"></div>
-    <div class="hour"></div>
-    <div class="minute"></div>
-    <div class="second"></div>
-    <div class="dail"></div>
-  </div>
-</div>
-<!-- partial -->
-    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script><script  src="./script.js"></script>
-    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+        <input type="button" id="toggle" value="🔒" />
 
-<!-- code open -->
-    <script src="NoSleep.min.js"></script>
-  
-    <input type="button" id="toggle" value="🔒" />
+        <script>
+          var noSleep = new NoSleep();
 
-    <script>
-      var noSleep = new NoSleep();
+          var wakeLockEnabled = false;
+          var toggleEl = document.querySelector("#toggle");
+          toggleEl.addEventListener('click', function() {
+            if (!wakeLockEnabled) {
+              noSleep.enable(); // keep the screen on!
+              wakeLockEnabled = true;
+              toggleEl.value = "✅";
+              document.body.style.backgroundColor = "";
+            } else {
+              noSleep.disable(); // let the screen turn off.
+              wakeLockEnabled = false;
+              toggleEl.value = "🔒";
+              document.body.style.backgroundColor = "";
+            }
+          }, false);
+        </script>
 
-      var wakeLockEnabled = false;
-      var toggleEl = document.querySelector("#toggle");
-      toggleEl.addEventListener('click', function() {
-        if (!wakeLockEnabled) {
-          noSleep.enable(); // keep the screen on!
-          wakeLockEnabled = true;
-          toggleEl.value = "✅";
-          document.body.style.backgroundColor = "";
-        } else {
-          noSleep.disable(); // let the screen turn off.
-          wakeLockEnabled = false;
-          toggleEl.value = "🔒";
-          document.body.style.backgroundColor = "";
-        }
-      }, false);
+        <button id="goFS" onclick="toggleFullScreen()">F</button>
+        <script>
+        	function toggleFullScreen() {
+        	  var doc = window.document;
+        	  var docEl = doc.documentElement;
+        	  var requestFullScreen = docEl.requestFullscreen || docEl.mozRequestFullScreen || docEl.webkitRequestFullScreen || docEl.msRequestFullscreen;
+        	  var cancelFullScreen = doc.exitFullscreen || doc.mozCancelFullScreen || doc.webkitExitFullscreen || doc.msExitFullscreen;
+        	  if(!doc.fullscreenElement && !doc.mozFullScreenElement && !doc.webkitFullscreenElement && !doc.msFullscreenElement) {
+        		requestFullScreen.call(docEl);
+        	  }
+        	  else {
+        		cancelFullScreen.call(doc);
+        	  }
+        	}
+        </script>
+      <!-- code close -->
+
+    <!--digital clock start-->
+    <div class="datetime">
+      <div class="date">
+        <span id="dayname">Day</span>,
+        <span id="month">Month</span>
+        <span id="daynum">00</span>,
+        <span id="year">Year</span>
+      </div>
+      <div class="time">
+        <span id="hour">00</span>:
+        <span id="minutes">00</span>:
+        <span id="seconds">00</span>
+        <span id="period">AM</span>
+      </div>
+    </div>
+    <!--digital clock end-->
+
+    <script type="text/javascript">
+    function updateClock(){
+      var now = new Date();
+      var dname = now.getDay(),
+          mo = now.getMonth(),
+          dnum = now.getDate(),
+          yr = now.getFullYear(),
+          hou = now.getHours(),
+          min = now.getMinutes(),
+          sec = now.getSeconds(),
+          pe = "AM";
+
+          if(hou >= 12){
+            pe = "PM";
+          }
+          if(hou == 0){
+            hou = 12;
+          }
+          if(hou > 12){
+            hou = hou - 12;
+          }
+
+          Number.prototype.pad = function(digits){
+            for(var n = this.toString(); n.length < digits; n = 0 + n);
+            return n;
+          }
+
+          var months = ["January", "February", "March", "April", "May", "June", "July", "Augest", "September", "October", "November", "December"];
+          var week = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+          var ids = ["dayname", "month", "daynum", "year", "hour", "minutes", "seconds", "period"];
+          var values = [week[dname], months[mo], dnum.pad(2), yr, hou.pad(2), min.pad(2), sec.pad(2), pe];
+          for(var i = 0; i < ids.length; i++)
+          document.getElementById(ids[i]).firstChild.nodeValue = values[i];
+    }
+
+    function initClock(){
+      updateClock();
+      window.setInterval("updateClock()", 1);
+    }
     </script>
 
-    <button id="goFS" onclick="toggleFullScreen()">F</button>
-    <script>
-    	function toggleFullScreen() {
-    	  var doc = window.document;
-    	  var docEl = doc.documentElement;
-    	  var requestFullScreen = docEl.requestFullscreen || docEl.mozRequestFullScreen || docEl.webkitRequestFullScreen || docEl.msRequestFullscreen;
-    	  var cancelFullScreen = doc.exitFullscreen || doc.mozCancelFullScreen || doc.webkitExitFullscreen || doc.msExitFullscreen;
-    	  if(!doc.fullscreenElement && !doc.mozFullScreenElement && !doc.webkitFullscreenElement && !doc.msFullscreenElement) {
-    		requestFullScreen.call(docEl);
-    	  }
-    	  else {
-    		cancelFullScreen.call(doc);
-    	  }
-    	}
-    </script> 
-  <!-- code close -->
-
-  
-</body>
+  </body>
 </html>
