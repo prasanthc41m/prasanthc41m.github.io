@@ -60,3 +60,29 @@ body{
   padding: 0 5px;
   border-radius: 3px;
 }
+
+#container { display:block; }
+@media only screen and (orientation:portrait){
+  #container {
+    -webkit-transform: rotate(90deg);
+    -moz-transform: rotate(90deg);
+    -o-transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+    transform: rotate(90deg);
+    justify-content: center;
+    align-items: center;
+    display: flex;
+  }
+}
+@media only screen and (orientation:landscape){
+  #container {
+     -webkit-transform: rotate(0deg);
+     -moz-transform: rotate(0deg);
+     -o-transform: rotate(0deg);
+     -ms-transform: rotate(0deg);
+     transform: rotate(0deg);
+     justify-content: center;
+     align-items: center;
+     display: flex;
+  }
+}
