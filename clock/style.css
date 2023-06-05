@@ -64,10 +64,6 @@ body{
 #container { display:block; }
 @media only screen and (orientation:portrait){
   #container {
-    -webkit-transform: rotate(90deg);
-    -moz-transform: rotate(90deg);
-    -o-transform: rotate(90deg);
-    -ms-transform: rotate(90deg);
     transform: rotate(90deg);
     justify-content: center;
     align-items: center;
@@ -76,13 +72,160 @@ body{
 }
 @media only screen and (orientation:landscape){
   #container {
-     -webkit-transform: rotate(0deg);
-     -moz-transform: rotate(0deg);
-     -o-transform: rotate(0deg);
-     -ms-transform: rotate(0deg);
      transform: rotate(0deg);
      justify-content: center;
      align-items: center;
      display: flex;
   }
+}
+
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p
+ { font-family: 'Raleway', sans-serif;
+}
+
+h1{font-size:35px;}
+h2{font-size:30px;}
+h3{font-size:25px;}
+p {font-size:16px;}
+
+body {background:#000;}
+.quotemark {
+    position: relative;
+    top: -12px;
+    padding-right: 10px;
+}
+
+blockquote {
+  border-left: 10px solid #fff;
+  margin: 30px 10px;
+  padding: 10px 30px;
+}
+blockquote:before {
+  color: #fff;
+  line-height: 0.1em;
+  margin-right: 0.25em;
+  vertical-align: -0.4em;
+}
+blockquote h1, h2, h3, p{
+  display: inline;
+	  color: #fff;
+
+}
+blockquote footer {
+	font-size:18px;
+	text-align:right;
+	color:#fff;
+}
+
+.container {
+	max-height:800px;
+	margin: 10% auto auto auto;
+}
+.quotebox {
+	background:#000;
+	max-width:700px;
+	min-height:100px;
+	margin:10px;
+}
+
+.quotebutton {
+	display:inline-block;
+	padding:6px 12px;
+}
+	#quotesource{margin-top:20px}
+
+.btn {margin-bottom:10px}
+
+.social-icons {
+	padding:6px 12px;
+	display:inline-block;
+
+}
+
+.btn-primary {
+	width: 100px;
+	height: 40px;
+	border:none;
+	background:#fff;
+	}
+
+@media only screen and (max-width: 768px){
+    #quotetext {font-size:25px; }
+	.container {	margin-right:20px;}
+    }
+@media only screen and (max-width: 320px){
+    #quotetext {font-size:18px; }
+
+    }
+
+    /*   quotes */
+
+:root {
+  font-size: 12px;
+  font-family: "Inter", sans-serif;
+  font-weight: 400;
+  background-color: #000;
+  color: #fff;
+}
+
+body {
+  min-height: 100vh;
+  position: relative;
+  box-sizing: border-box;
+}
+
+* {
+  box-sizing: inherit;
+/*   outline: 1px solid lime; */
+}
+
+#quote-box {
+  position: absolute;
+  left: 50%;
+  top: 150%;
+  translate: -50% -50%;
+  background-color: #000;
+  border-radius: 1em;
+  pointer-events: none;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  min-width:700px;
+
+}
+
+#text {
+  position: relative;
+  color: #fff;
+
+}
+
+#text::before {
+  content: "“";
+  position: absolute;
+  top: 0;
+  left: -1em;
+}
+
+#text::after {
+  content: "”";
+  position: absolute;
+  right: -1em;
+  bottom: 0;
+}
+
+#tweet-quote, #new-quote {
+  pointer-events: auto;
+}
+
+#new-quote {
+
 }
