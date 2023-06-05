@@ -198,7 +198,9 @@ body {
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
-  min-width:700px;
+  min-width:400px;
+  max-width:700px;
+	
 
 }
 
