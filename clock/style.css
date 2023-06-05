@@ -189,7 +189,7 @@ body {
 #quote-box {
   position: absolute;
   left: 50%;
-  top: 150%;
+  top: 125%;
   translate: -50% -50%;
   background-color: #000;
   border-radius: 1em;
