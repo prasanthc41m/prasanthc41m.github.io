@@ -9,6 +9,7 @@
     <link rel="manifest" href="favicon/site.webmanifest">
     <link rel="author" href="#">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="quotes.css">
   </head>
   <body onload="initClock()">
     <!-- test -->
@@ -113,6 +114,20 @@
       window.setInterval("updateClock()", 1);
     }
     </script>
+
+    <!-- qoutes-starts -->
+
+  <script src="qoutes.js"></script>
+
+  <section  id="quote-box">
+    <blockquote>
+      <p id="text"></p>
+      <cite id="author"></cite>
+    </blockquote>
+    <input id="new-quote" type="button" value="New Quote" />
+   </section>
+
+    <!-- qoutes-ends -->
 </div>
   </body>
 </html>
