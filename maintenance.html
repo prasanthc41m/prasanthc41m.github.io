@@ -1,24 +1,32 @@
 <!DOCTYPE html>
-<title>Website Maintenance</title>
-<style>
-  body { text-align: center; padding: 150px; }
-  h1 { text-align: center; font-size: 50px; }
-  body { font: 20px Helvetica, sans-serif; color: #333; }
-  article { display: block; text-align: left; width: 750px; margin: 0 auto; }
-  a { color: #FF6700; text-decoration: none; }
-  a:hover { color: #333; text-decoration: none; }
-</style>
+<title>Site Maintenance</title>
 
-<article>
-  <h1>We&rsquo;ll be back soon!</h1>
-  <div>
-  <p> Sorry for the inconvenience but we&rsquo;re performing some maintenance at the moment. If you need to you can always mail us to <a>contact@<script type="text/javascript"> document.write(window.location.hostname);</script></a> otherwise we&rsquo;ll be back online shortly! </p>
-  <p><a>&mdash; The <script type="text/javascript"> document.write(name);</script> Team</a></p>
-  </div>
-</article>
+    <style>
+  body { text-align: center; padding: 150px; font: 20px Helvetica, sans-serif; color: #333; }
+  .h1 { text-align: center; font-size: 60px; }
+  .tail { color: #e34c26; font: 20px Helvetica, sans-serif; }
+  .container { display: block; text-align: left; width: 750px; margin: 0 auto; }
+  .contact a { color: #e34c26; text-decoration: none; }
+  .contact a:hover { color: #333; text-decoration: none; }
+  .contact {font: 20px Helvetica, sans-serif; color: #333;}
+    </style>
 
-<script type="text/javascript">
-    var domainName = window.location.hostname;
-    var name = domainName.split('.')[0];
-    name = name.charAt(0).toUpperCase() + name.slice(1);
+<div class="container">
+        <p class="h1">We're working on it!</p>
+        <p class="contact">We apologize for any inconvenience, but our website is currently undergoing some scheduled maintenance. In the meantime, you can still <a href="mailto:contact@hosted.website">contact us</a>.  We appreciate your patience and understanding.</p>
+        <p>Thank you for choosing <a class="tail">hosted.website</a></p>
+</div>
+    <script>
+    var emailLink = document.querySelector(".contact a");
+    var currentEmail = emailLink.getAttribute("href");
+    var hostedDomain = window.location.hostname;
+    var newEmail = currentEmail.replace(/@.*/, "@" + hostedDomain);
+    emailLink.setAttribute("href", newEmail);
+    var tailParagraph = document.querySelector(".tail");
+    var currentText = tailParagraph.textContent;
+    var hostedName = hostedDomain.replace(/\..*/, "");
+    var capitalizedHostedName = hostedName.charAt(0).toUpperCase() + hostedName.slice(1);
+    var newText = currentText.replace("hosted.website", capitalizedHostedName);
+    tailParagraph.textContent = newText;
+    emailLink.textContent = "contact us";
 </script>
