@@ -48,7 +48,7 @@ Conferences:
 
 Interests:
 
-- Reading blogs and articles, bug-hunting, creating CTFs, supporting and contributing to the cybersecurity community, and more.\
+- Reading blogs and articles, bug-hunting, creating CTFs, supporting and contributing to the cybersecurity community and more.\
 
   `;
   var speed = 25;
