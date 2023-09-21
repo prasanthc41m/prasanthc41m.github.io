@@ -42,7 +42,7 @@ Training and Certifications:
 Conferences:
 
 - Organized multiple events as a Chapter Leader at OWASP Kannur Chapter in 2022
-- Provided technical support at the Cyber Security Summit 2021 "Real Time Real Attack" hosted by Cyberdome Kozhikode
+- Provided technical support at the Cyber Security Summit 2021 "Real Time Real Attack" hosted by Kerala Police Cyberdome Kozhikode
 - Organized Retrain-2021, Adversary Emulation - A Practical Approach with eHackify Cybersecurity Research & Trainings
 - Provided technical support at Redteam Hacker Academy's Redteam Security Summit-2018, Cyber Security & Hacking Conference
 
