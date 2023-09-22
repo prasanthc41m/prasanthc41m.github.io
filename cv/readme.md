@@ -1,1 +1,1 @@
-prasanthk.com/cv/2023.pdf
+prasanthk.com/cv/Prasanth-K-CV-2023.pdf
