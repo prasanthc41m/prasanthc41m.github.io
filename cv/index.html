@@ -16,7 +16,8 @@
       <link rel="icon" type="image/png" sizes="16x16" href="img/favicon/favicon-16x16.png">
       <link rel="manifest" href="img/favicon/site.webmanifest">
       <link rel="author" href="https://prasanthk.com">
-      <style>
+
+ <style>
         body {
             font-family: Arial, sans-serif;
         }
@@ -40,6 +41,7 @@
             background-color: #1E90FF;
         }
     </style>
+      
   </head>
   <body oncontextmenu="return false;">
     <nav>
@@ -55,17 +57,18 @@
       <h1 class="hero__title">Prasanth K</h1>
       <p class="hero__description">Pentester | Bughunter | Sysadmin | Linux Lover | Artist</p>
     </div>
-
-          <div class="hero__terminal">
+    <div class="hero__terminal">
       <pre>
-            <!-- Place your demo code here -->
-
-
-
+        <!-- Place your demo code here -->
+        <code class="shell-session demo">c41m @work:~ $ </code>
       </pre>
     </div>
     </div>
-         <div id="fileList"></div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+  <!--  <script src="scribbler.js"></script> -->
+
+     <div id="fileList"></div>
 
     <script>
         fetch('https://api.github.com/repos/prasanthc41m/prasanthc41m.github.io/contents/cv')
@@ -81,7 +84,6 @@
             })
             .catch(error => console.error(error));
     </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
-    <script>hljs.initHighlightingOnLoad();</script>
+        
   </body>
 </html>
