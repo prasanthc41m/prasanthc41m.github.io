@@ -2,6 +2,30 @@
 <html>
 <head>
     <title>Resume/CV</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        #fileList {
+            margin: 0 auto;
+            width: 50%;
+            text-align: center;
+
+        }
+        #fileList a {
+            display: block;
+            background-color: #f8f8f8;
+            color: #333;
+            text-decoration: none;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            transition: background-color 0.2s ease;
+        }
+        #fileList a:hover {
+            background-color: #1E90FF;
+        }
+    </style>
 </head>
 <body>
     <div id="fileList"></div>
@@ -13,7 +37,7 @@
                 let html = '';
                 data.forEach(file => {
                     if (!file.name.endsWith('.html')) {
-                        html += `<a href="${file.download_url}" target="_blank">${file.name}</a><br>`;
+                        html += `<a href="${file.download_url}" target="_blank">${file.name}</a>`;
                     }
                 });
                 document.getElementById('fileList').innerHTML = html;
