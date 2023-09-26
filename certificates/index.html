@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>File List</title>
+</head>
+<body>
+    <div id="fileList"></div>
+
+    <script>
+        fetch('https://api.github.com/repos/prasanthc41m/prasanthc41m.github.io/contents/cv')
+            .then(response => response.json())
+            .then(data => {
+                let html = '';
+                data.forEach(file => {
+                    if (!file.name.endsWith('.html')) {
+                        html += `<a href="${file.download_url}" target="_blank">${file.name}</a><br>`;
+                    }
+                });
+                document.getElementById('fileList').innerHTML = html;
+            })
+            .catch(error => console.error(error));
+    </script>
+</body>
+</html>
