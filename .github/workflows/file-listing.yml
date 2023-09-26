@@ -1,0 +1,37 @@
+name: File Listing
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Generate file listing
+        run: |
+          echo "<!DOCTYPE html>" > index.html
+          echo "<html>" > index.html
+          echo "<head>" > index.html
+          echo "<title>File Listing</title>" > index.html
+          echo "</head>" > index.html
+          echo "<body>" > index.html
+          echo "<h1>File Listing</h1>" > index.html
+          echo "<ul>" > index.html
+
+          for file in $(find . -type f); do
+            echo "<li><a href='$file'>$file</a></li>" >> index.html
+          done
+
+          echo "</ul>" > index.html
+          echo "</body>" > index.html
+          echo "</html>" > index.html
+
+      - name: Deploy file listing
+        uses: actions/upload-pages-artifact@v1
+        with:
+          path: index.html
