@@ -12,7 +12,9 @@
             .then(data => {
                 let html = '';
                 data.forEach(file => {
-                    html += `<a href="${file.download_url}" target="_blank">${file.name}</a><br>`;
+                    if (!file.name.endsWith('.html')) {
+                        html += `<a href="${file.download_url}" target="_blank">${file.name}</a><br>`;
+                    }
                 });
                 document.getElementById('fileList').innerHTML = html;
             })
