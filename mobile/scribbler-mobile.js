@@ -12,11 +12,10 @@ var getAll = function (selector, scope) {
 // setup typewriter effect in the terminal demo
 if (document.getElementsByClassName('demo').length > 0) {
   var i = 0;
-  var txt = `show portrait-view
-  
-  ERROR!!
+  var txt = `Are you using mobile?
 
-Rotate your screen.
+
+Please enable auto-rotate and your screen left/right.
 
 \This website is viewable
 only in landscape mode.\
