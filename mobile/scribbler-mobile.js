@@ -15,7 +15,7 @@ if (document.getElementsByClassName('demo').length > 0) {
   var txt = `Are you using mobile?
 
 
-Please enable auto-rotate and your screen left/right.
+Please enable auto-rotate and turn your screen left/right.
 
 \This website is viewable
 only in landscape mode.\
