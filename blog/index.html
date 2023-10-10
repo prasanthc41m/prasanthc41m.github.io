@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">  <head>
+      <meta charset="utf-8">
+      <meta name="description" content="Prasanth K">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>
+        Resume/CV
+      </title>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+      <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:300,400,600,700,800,900" rel="stylesheet">
+      <link rel="stylesheet" href="../railscasts.min.css">
+      <link rel="stylesheet" href="../scribbler-global.css">
+      <link rel="stylesheet" href="../scribbler-landing.css">
+      <link rel="shortcut icon" type="image/png" href="../img/favicon/favicon.png">
+      <link rel="apple-touch-icon" sizes="180x180" href="../img/favicon/apple-touch-icon.png">
+      <link rel="icon" type="image/png" sizes="16x16" href="../img/favicon/favicon-16x16.png">
+      <link rel="manifest" href="../img/favicon/site.webmanifest">
+      <link rel="author" href="https://prasanthk.com">
+
+ <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        #fileList {
+            margin: 0 auto;
+            width: 50%;
+            text-align: center;
+
+        }
+        #fileList a {
+            display: block;
+            background-color: #f8f8f8;
+            color: #333;
+            text-decoration: none;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            transition: background-color 0.2s ease;
+        }
+        #fileList a:hover {
+            background-color: #1E90FF;
+        }
+    </style>
+      
+  </head>
+  <body oncontextmenu="return false;">
+    <nav>
+      <div class="logo"></div>
+      <ul class="menu">
+        <div class="menu__item toggle"><span></span></div>
+        <li class="menu__item"><a href="https://prasanthk.com" class="link link--dark"><i class="fa fa-home"></i></a></li>            
+        <li class="menu__item"><a href="https://www.linkedin.com/in/prasanthc41m/" target="_blank" class="link link--dark"><i class="fa fa-linkedin"></i></a></li>
+        <li class="menu__item"><a href="https://prasanthc41m.medium.com" target="_blank" class="link link--dark"><i class="fa fa-medium"></i></a></li>
+        <li class="menu__item"><a href="https://github.com/prasanthc41m" target="_blank" class="link link--dark"><i class="fa fa-github"></i></a></li>
+        <li class="menu__item"><a href="https://prasanthk.com/certificates" target="_blank" class="link link--dark"><i class="fa fa-certificate"></i></a></li>
+      </ul>
+    </nav>
+    <div class="hero">
+      <h1 class="hero__title">Prasanth K</h1>
+      <p class="hero__description">Pentester | Bughunter | Sysadmin | Linux Lover | Artist</p>
+    </div>
+      <pre>
+        <!-- Place your demo code here -->
+       
+      </pre>
+    </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+   
+
+     <div id="fileList"></div>
+
+    <script>
+        fetch('https://api.github.com/repos/prasanthc41m/prasanthc41m.github.io/contents/cv')
+            .then(response => response.json())
+            .then(data => {
+                let html = '';
+                data.forEach(file => {
+                    if (!file.name.endsWith('.html')) {
+                        html += `<a href="${file.download_url}" target="_blank">${file.name}</a>`;
+                    }
+                });
+                document.getElementById('fileList').innerHTML = html;
+            })
+            .catch(error => console.error(error));
+    </script>
+        
+  </body>
+</html>
