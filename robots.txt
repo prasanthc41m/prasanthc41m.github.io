@@ -4,4 +4,5 @@ Disallow: /
 
 User-agent: *
 Disallow: /
+allow: /index.html
 Sitemap: https://prasanthk.com/sitemap.xml
