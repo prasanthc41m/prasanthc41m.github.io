@@ -4,5 +4,8 @@ Disallow: /
 
 User-agent: *
 Disallow: /
-allow: /index.html
+
+User-agent: Googlebot
+allow: index.html
+
 Sitemap: https://prasanthk.com/sitemap.xml
