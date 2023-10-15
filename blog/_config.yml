@@ -2,10 +2,10 @@ title: c41m
 description: "A blog from prasanthk.com"
 author:
   name: "c41m"
-  email: " "
-  url: "https://prasanthk.com/blog"
+  email: "c41m"
+  url: "https://prasanthk.com"
 
-baseurl: /
+baseurl: /blog
 
 source: .
 destination: ./_site
