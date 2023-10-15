@@ -27,11 +27,6 @@ plugins:
   - jekyll-paginate
   - jekyll-sitemap
 
-# Usernames and badges
-github_username: prasanthc41m
-medium: prasanthc41m
-linkedin: prasanthc41m  
-
 # Custom variables
 owner : "c41m"
 year : "2023"
