@@ -3,9 +3,9 @@ description: "A blog from prasanthk.com"
 author:
   name: "Prasanth K"
   email: ""
-  url: "https://prasanthk.com/blog"
+  url: "https://prasanthk.com"
 
-baseurl: /
+baseurl: /blog
 
 source: .
 destination: ./_site
