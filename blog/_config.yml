@@ -1,0 +1,37 @@
+title: c41m
+description: "A blog from prasanthk.com"
+author:
+  name: "Prasanth K"
+  email: ""
+  url: "https://blog.prasanthk.com/"
+
+baseurl: /
+
+source: .
+destination: ./_site
+permalink: /:title
+paginate: 3
+paginate_path: /page/:num/
+
+defaults:
+  -
+    scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+
+future: true
+plugins:
+  - jekyll-seo-tag
+  - jekyll-paginate
+  - jekyll-sitemap
+
+# Usernames and badges
+github_username: prasanthc41m
+medium: prasanthc41m
+linkedin: prasanthc41m  
+
+# Custom variables
+owner : "c41m"
+year : "2023"
