@@ -1,11 +1,11 @@
 title: c41m
 description: "A blog from prasanthk.com"
 author:
-  name: "Prasanth K"
-  email: ""
-  url: "https://prasanthk.com"
+  name: "c41m"
+  email: " "
+  url: "https://prasanthk.com/blog"
 
-baseurl: /blog
+baseurl: /
 
 source: .
 destination: ./_site
@@ -29,4 +29,4 @@ plugins:
 
 # Custom variables
 owner : "c41m"
-year : "2023"
+year : "2020"
