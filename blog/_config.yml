@@ -3,7 +3,7 @@ description: "A blog from prasanthk.com"
 author:
   name: "Prasanth K"
   email: ""
-  url: "https://prasanthk.com/"
+  url: "https://prasanthk.com"
 
 baseurl: /blog
 
