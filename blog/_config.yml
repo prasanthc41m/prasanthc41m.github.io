@@ -5,7 +5,7 @@ author:
   email: ""
   url: "https://blog.prasanthk.com/"
 
-baseurl: /
+baseurl: /blog
 
 source: .
 destination: ./_site
