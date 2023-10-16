@@ -51,7 +51,7 @@ Interests:
 - Reading blogs and articles, attending webinars,workshops and events, bug/threat-hunting, creating CTFs, supporting and contributing to the cybersecurity community and more.\
 
   `;
-  var speed = 25;
+  var speed = 10;
 
   function typeItOut () {
     if (i < txt.length) {
