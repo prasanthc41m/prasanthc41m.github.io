@@ -18,7 +18,7 @@ if (document.getElementsByClassName('demo').length > 0) {
 
 Skills:
 
-- Monitoring and Triage, IOC Monitoring, Log Analysis, SIEM, SOAR, EDR, Analytical and Critical Thinking, Threat Detection, Event Security, Monitoring, Dashboard Creation, Wire Shark, Active Learning, Excellent Communication, Self-Motivated, Computer Networking, Operating Systems, Network Administration, Tenable Nessus, Symantec Endpoint Protection, Risk Mitigation, Vulnerability Assessment and Penetration Testing, Tenable Nessus, Splunk SIEM, Threat Research
+Monitoring and Triage, IOC Monitoring, Log Analysis, SIEM, SOAR, EDR, Analytical and Critical Thinking, Threat Detection, Event Security, Monitoring, Dashboard Creation, Wire Shark, Active Learning, Excellent Communication, Self-Motivated, Computer Networking, Operating Systems, Network Administration, Tenable Nessus, Symantec Endpoint Protection, Risk Mitigation, Vulnerability Assessment and Penetration Testing, Tenable Nessus, Splunk SIEM, Threat Research
 
 Achievements:
 
