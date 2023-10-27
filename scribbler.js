@@ -16,6 +16,10 @@ if (document.getElementsByClassName('demo').length > 0) {
 
  \     A seasoned and accomplished cybersecurity professional with over a decade of experience in the IT industry. With 3 years of dedicated experience in cybersecurity and a proven track record of identifying and reporting vulnerabilities, I have the skills, knowledge, and drive to tackle complex security challenges. My expertise in systems, networks, and security combined with my certifications and volunteer work demonstrates my commitment to staying current in the ever-evolving field of cybersecurity.
 
+Skills:
+
+- Monitoring and Triage, IOC Monitoring, Log Analysis, SIEM, SOAR, EDR, Analytical and Critical Thinking, Threat Detection, Event Security, Monitoring, Dashboard Creation, Wire Shark, Active Learning, Excellent Communication, Self-Motivated, Computer Networking, Operating Systems, Network Administration, Tenable Nessus, Symantec Endpoint Protection, Risk Mitigation, Vulnerability and Penetration Testing, Tenable Nessus, Splunk SIEM, Threat Research
+
 Achievements:
 
 - Contributed to the identification and mitigation of a critical vulnerability (XSS) in Codologic's forum application, Codoforum and recognized by The MITRE Corporation and Exploit Database
