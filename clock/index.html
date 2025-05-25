@@ -5,63 +5,75 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Flip Clock</title>
     <link rel="shortcut icon" type="image/png" href="https://prasanthk.com/clock/favicon/favicon.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://prasanthk.com/clock/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://prasanthk.com/clock/favicon/favicon-16x16.png">
+    <link rel="manifest" href="https://prasanthk.com/clock/favicon/site.webmanifest">
+    <link rel="author" href="#">
     <style>
         :root {
-            --primary-color: #333;
-            --secondary-color: #222;
-            --text-color: #fff;
-            --highlight-color: #4a90e2;
+            --digit-width: 20vw;
+            --digit-height: calc(var(--digit-width) * 1.75);
+            --digit-font-size: calc(var(--digit-width) * 1.5);
+            --divider-font-size: calc(var(--digit-width) * 0.5);
+            --date-font-size: calc(var(--digit-width) * 0.25);
+            --controls-font-size: calc(var(--digit-width) * 0.3);
         }
-        
+
+        @media (min-width: 768px) {
+            :root {
+                --digit-width: 150px;
+                --digit-height: 210px;
+                --digit-font-size: 220px;
+                --divider-font-size: 160px;
+                --date-font-size: 24px;
+                --controls-font-size: 16px;
+            }
+        }
+
         * {
             box-sizing: border-box;
-            margin: 0;
-            padding: 0;
         }
-        
+
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', sans-serif;
+            font-family: Arial, sans-serif;
             background-color: #111;
-            color: var(--text-color);
+            color: #fff;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             min-height: 100vh;
             margin: 0;
-            overflow: hidden;
-            touch-action: manipulation;
+            padding: 20px;
+            overflow: auto;
             -webkit-tap-highlight-color: transparent;
         }
-        
+
         #container {
-            width: 100%;
-            max-width: 600px;
-            padding: 20px;
             text-align: center;
+            width: 100%;
+            max-width: 1200px;
         }
-        
-        /* Flip Clock Styles - Mobile First */
+
+        /* Flip Clock Styles */
         .flip-clock {
             display: flex;
             justify-content: center;
+            align-items: center;
             flex-wrap: wrap;
-            margin: 10px 0 20px;
+            margin-bottom: 20px;
+            width: 100%;
         }
-        
+
         .flip-unit-container {
             display: block;
             position: relative;
-            width: 18vw;
-            height: 24vw;
-            max-width: 80px;
-            max-height: 110px;
-            min-width: 50px;
-            min-height: 70px;
-            perspective: 200px;
-            margin: 0 1px;
+            width: var(--digit-width);
+            height: var(--digit-height);
+            perspective: 600px;
+            margin: 0 2px;
         }
-        
+
         .flip-unit {
             position: relative;
             width: 100%;
@@ -69,7 +81,7 @@
             transform-style: preserve-3d;
             transition: transform 0.5s;
         }
-        
+
         .flip-card {
             display: flex;
             justify-content: center;
@@ -77,180 +89,137 @@
             position: absolute;
             width: 100%;
             height: 100%;
-            font-size: 10vw;
+            font-size: var(--digit-font-size);
             font-weight: bold;
             color: white;
-            background-color: var(--primary-color);
-            border-radius: 5px;
+            background-color: #333;
+            border-radius: 8px;
             backface-visibility: hidden;
             overflow: hidden;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.7);
+            user-select: none;
         }
-        
-        @media (min-width: 500px) {
-            .flip-card {
-                font-size: 50px;
-            }
-        }
-        
+
         .flip-card.front {
             transform: rotateX(0deg);
             z-index: 1;
         }
-        
+
         .flip-card.back {
             transform: rotateX(180deg);
         }
-        
+
         .flip-card::before, .flip-card::after {
             content: "";
             position: absolute;
             width: 100%;
             height: 50%;
-            background-color: var(--secondary-color);
+            background-color: #222;
             z-index: -1;
         }
-        
+
         .flip-card::before {
             top: 0;
-            border-radius: 5px 5px 0 0;
+            border-radius: 8px 8px 0 0;
         }
-        
+
         .flip-card::after {
             bottom: 0;
-            border-radius: 0 0 5px 5px;
+            border-radius: 0 0 8px 8px;
         }
-        
+
         .flip-clock-divider {
             display: flex;
             align-items: center;
-            font-size: 8vw;
-            margin: 0 1px;
-            color: var(--text-color);
-            height: 24vw;
-            max-height: 110px;
-            min-height: 70px;
+            font-size: var(--divider-font-size);
+            margin: 0 2px;
+            color: #fff;
+            height: var(--digit-height);
+            padding-bottom: calc(var(--digit-height) * 0.1);
         }
-        
-        @media (min-width: 500px) {
-            .flip-clock-divider {
-                font-size: 40px;
-            }
-        }
-        
+
         .date-display {
-            font-size: 4vw;
-            margin: 10px 0 20px;
+            font-size: var(--date-font-size);
+            margin-bottom: 20px;
             color: #ddd;
+            width: 100%;
+            text-align: center;
         }
-        
-        @media (min-width: 500px) {
-            .date-display {
-                font-size: 20px;
-            }
-        }
-        
-        /* Button styles - Mobile Optimized */
-        .button-group {
+
+        /* Button styles */
+        .controls {
             display: flex;
             justify-content: center;
             flex-wrap: wrap;
-            margin: 15px 0;
+            margin: 10px 0;
+            width: 100%;
         }
-        
-        .btn {
-            background: var(--primary-color);
+
+        #toggle, #goFS, #new-quote {
+            background: #333;
             color: white;
             border: none;
-            padding: 12px 18px;
+            padding: 10px 15px;
             margin: 5px;
-            border-radius: 8px;
+            border-radius: 5px;
             cursor: pointer;
-            font-size: 16px;
-            transition: all 0.2s;
+            font-size: var(--controls-font-size);
+            transition: background 0.3s;
             min-width: 60px;
-            touch-action: manipulation;
         }
-        
-        .btn:hover, .btn:active {
-            background: var(--highlight-color);
-            transform: scale(1.05);
+
+        #toggle:hover, #goFS:hover, #new-quote:hover {
+            background: #555;
         }
-        
-        .btn:active {
-            transform: scale(0.98);
-        }
-        
+
         /* Quote box styles */
         #quote-box {
-            max-width: 100%;
+            max-width: 90%;
             margin: 20px auto;
             padding: 15px;
-            background: var(--secondary-color);
-            border-radius: 10px;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+            background: #222;
+            border-radius: 8px;
+            font-size: calc(var(--date-font-size) * 0.7);
         }
-        
+
         #text {
-            font-size: 4vw;
-            line-height: 1.4;
+            font-style: italic;
             margin-bottom: 10px;
+            line-height: 1.4;
         }
-        
-        @media (min-width: 500px) {
-            #text {
-                font-size: 18px;
-            }
-        }
-        
+
         #author {
             display: block;
             text-align: right;
-            font-size: 3.5vw;
             color: #aaa;
+            font-size: 0.9em;
         }
-        
-        @media (min-width: 500px) {
-            #author {
-                font-size: 16px;
-            }
-        }
-        
+
         /* Landscape orientation adjustments */
-        @media (orientation: landscape) {
-            .flip-unit-container {
-                width: 16vh;
-                height: 20vh;
-                max-width: 80px;
-                max-height: 100px;
+        @media (max-height: 500px) and (orientation: landscape) {
+            :root {
+                --digit-width: 15vh;
             }
-            
-            .flip-card {
-                font-size: 8vh;
+
+            .flip-clock {
+                margin-bottom: 10px;
             }
-            
-            .flip-clock-divider {
-                font-size: 6vh;
-                height: 20vh;
-            }
-            
-            .date-display {
-                font-size: 3vh;
-                margin: 5px 0 10px;
-            }
-            
-            #text {
-                font-size: 3vh;
-            }
-            
-            #author {
-                font-size: 2.5vh;
+
+            #quote-box {
+                display: none;
             }
         }
     </style>
 </head>
 <body onload="initClock()">
     <div id="container">
+        <script src="https://unpkg.com/nosleep.js@0.12.0/dist/NoSleep.min.js"></script>
+
+        <div class="controls">
+            <input type="button" id="toggle" value="🔓" aria-label="Toggle screen lock">
+            <button id="goFS" onclick="toggleFullScreen()" aria-label="Toggle fullscreen">⛶</button>
+        </div>
+
+        <!-- Date Display -->
         <div class="date-display">
             <span id="dayname">Sunday</span>,
             <span id="month">May</span>
@@ -262,59 +231,52 @@
         <div class="flip-clock">
             <!-- Hours -->
             <div class="flip-unit-container">
-                <div class="flip-unit" id="hour-tens-unit">
+                <div class="flip-unit">
                     <div class="flip-card front" id="hour-tens-front">0</div>
                     <div class="flip-card back" id="hour-tens-back">0</div>
                 </div>
             </div>
             <div class="flip-unit-container">
-                <div class="flip-unit" id="hour-ones-unit">
+                <div class="flip-unit">
                     <div class="flip-card front" id="hour-ones-front">0</div>
                     <div class="flip-card back" id="hour-ones-back">0</div>
                 </div>
             </div>
-            
+
             <div class="flip-clock-divider">:</div>
-            
+
             <!-- Minutes -->
             <div class="flip-unit-container">
-                <div class="flip-unit" id="minute-tens-unit">
+                <div class="flip-unit">
                     <div class="flip-card front" id="minute-tens-front">0</div>
                     <div class="flip-card back" id="minute-tens-back">0</div>
                 </div>
             </div>
             <div class="flip-unit-container">
-                <div class="flip-unit" id="minute-ones-unit">
+                <div class="flip-unit">
                     <div class="flip-card front" id="minute-ones-front">0</div>
                     <div class="flip-card back" id="minute-ones-back">0</div>
                 </div>
             </div>
-            
+
             <div class="flip-clock-divider">:</div>
-            
+
             <!-- Seconds -->
             <div class="flip-unit-container">
-                <div class="flip-unit" id="second-tens-unit">
+                <div class="flip-unit">
                     <div class="flip-card front" id="second-tens-front">0</div>
                     <div class="flip-card back" id="second-tens-back">0</div>
                 </div>
             </div>
             <div class="flip-unit-container">
-                <div class="flip-unit" id="second-ones-unit">
+                <div class="flip-unit">
                     <div class="flip-card front" id="second-ones-front">0</div>
                     <div class="flip-card back" id="second-ones-back">0</div>
                 </div>
             </div>
-            
-            <!-- AM/PM -->
-            <div class="flip-clock-divider" id="period" style="font-size: 4vw; margin-left: 8px;">AM</div>
-        </div>
 
-        <!-- Button Group -->
-        <div class="button-group">
-            <button id="toggle" class="btn">🔒 Lock</button>
-            <button id="goFS" class="btn">Fullscreen</button>
-            <button id="new-quote" class="btn">New Quote</button>
+            <!-- AM/PM -->
+            <div class="flip-clock-divider" id="period" style="font-size: calc(var(--divider-font-size) * 0.6); margin-left: 8px;">AM</div>
         </div>
 
         <!-- Quote Box -->
@@ -323,6 +285,7 @@
                 <p id="text">Faith, mighty faith, the promise sees, And looks to God alone Laughs at impossibilities, And cries it shall be done.</p>
                 <cite id="author">Charles Wesley</cite>
             </blockquote>
+            <input id="new-quote" type="button" value="New Quote">
         </section>
     </div>
 
@@ -332,70 +295,18 @@
         let currentMinutes = 0;
         let currentSeconds = 0;
         let currentPeriod = "AM";
-        
-        // Mobile detection
-        const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-        
-        // Initialize NoSleep.js only if needed
-        let noSleep;
-        if (isMobile) {
-            document.addEventListener('DOMContentLoaded', () => {
-                // Load NoSleep.js only on mobile devices
-                const script = document.createElement('script');
-                script.src = 'https://unpkg.com/nosleep.js@0.12.0/dist/NoSleep.min.js';
-                script.onload = () => {
-                    noSleep = new NoSleep();
-                    setupWakeLock();
-                };
-                document.head.appendChild(script);
-            });
-        }
-        
-        function setupWakeLock() {
-            const toggleEl = document.getElementById('toggle');
-            let wakeLockEnabled = false;
-            
-            toggleEl.addEventListener('click', function() {
-                if (!wakeLockEnabled && noSleep) {
-                    noSleep.enable();
-                    wakeLockEnabled = true;
-                    toggleEl.textContent = "✅ Unlock";
-                    toggleEl.style.backgroundColor = '#4CAF50';
-                } else {
-                    if (noSleep) noSleep.disable();
-                    wakeLockEnabled = false;
-                    toggleEl.textContent = "🔒 Lock";
-                    toggleEl.style.backgroundColor = '';
-                }
-            }, false);
-        }
-        
-        // Fullscreen toggle
-        document.getElementById('goFS').addEventListener('click', toggleFullScreen);
-        
-        function toggleFullScreen() {
-            if (!document.fullscreenElement) {
-                document.documentElement.requestFullscreen().catch(err => {
-                    console.error(`Error attempting to enable fullscreen: ${err.message}`);
-                });
-            } else {
-                if (document.exitFullscreen) {
-                    document.exitFullscreen();
-                }
-            }
-        }
-        
+
         function updateClock() {
-            const now = new Date();
-            const dname = now.getDay();
-            const mo = now.getMonth();
-            const dnum = now.getDate();
-            const yr = now.getFullYear();
-            let hou = now.getHours();
-            const min = now.getMinutes();
-            const sec = now.getSeconds();
-            let pe = "AM";
-            
+            var now = new Date();
+            var dname = now.getDay(),
+                mo = now.getMonth(),
+                dnum = now.getDate(),
+                yr = now.getFullYear(),
+                hou = now.getHours(),
+                min = now.getMinutes(),
+                sec = now.getSeconds(),
+                pe = "AM";
+
             if (hou >= 12) {
                 pe = "PM";
             }
@@ -405,73 +316,124 @@
             if (hou > 12) {
                 hou = hou - 12;
             }
-            
+
             Number.prototype.pad = function(digits) {
-                return this.toString().padStart(digits, '0');
+                for (var n = this.toString(); n.length < digits; n = 0 + n);
+                return n;
             }
-            
-            const months = ["January", "February", "March", "April", "May", "June", 
-                           "July", "August", "September", "October", "November", "December"];
-            const week = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-            
-            document.getElementById('dayname').textContent = week[dname];
-            document.getElementById('month').textContent = months[mo];
-            document.getElementById('daynum').textContent = dnum.pad(2);
-            document.getElementById('year').textContent = yr;
-            document.getElementById('period').textContent = pe;
-            
+
+            var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+            var week = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+            var ids = ["dayname", "month", "daynum", "year", "period"];
+            var values = [week[dname], months[mo], dnum.pad(2), yr, pe];
+
+            for (var i = 0; i < ids.length; i++) {
+                document.getElementById(ids[i]).textContent = values[i];
+            }
+
             // Update flip clock
             updateFlipClock(hou, min, sec);
         }
-        
+
         function updateFlipClock(hours, minutes, seconds) {
-            const timeStr = hours.toString().padStart(2, '0') + 
-                          minutes.toString().padStart(2, '0') + 
-                          seconds.toString().padStart(2, '0');
-            
-            // Update each digit if changed
-            updateDigit('hour', timeStr.substring(0, 2));
-            updateDigit('minute', timeStr.substring(2, 4));
-            updateDigit('second', timeStr.substring(4, 6));
-            
+            // Format time to always have 2 digits
+            const timeStr = hours.toString().padStart(2, '0') +
+                            minutes.toString().padStart(2, '0') +
+                            seconds.toString().padStart(2, '0');
+
+            // Get all flip cards
+            const cards = {
+                hourTensFront: document.getElementById('hour-tens-front'),
+                hourTensBack: document.getElementById('hour-tens-back'),
+                hourOnesFront: document.getElementById('hour-ones-front'),
+                hourOnesBack: document.getElementById('hour-ones-back'),
+                minuteTensFront: document.getElementById('minute-tens-front'),
+                minuteTensBack: document.getElementById('minute-tens-back'),
+                minuteOnesFront: document.getElementById('minute-ones-front'),
+                minuteOnesBack: document.getElementById('minute-ones-back'),
+                secondTensFront: document.getElementById('second-tens-front'),
+                secondTensBack: document.getElementById('second-tens-back'),
+                secondOnesFront: document.getElementById('second-ones-front'),
+                secondOnesBack: document.getElementById('second-ones-back')
+            };
+
+            // Only animate if the value has changed
+            if (timeStr[0] !== currentHours.toString().padStart(2, '0')[0]) {
+                animateFlip(cards.hourTensFront, cards.hourTensBack, timeStr[0]);
+            }
+            if (timeStr[1] !== currentHours.toString().padStart(2, '0')[1]) {
+                animateFlip(cards.hourOnesFront, cards.hourOnesBack, timeStr[1]);
+            }
+            if (timeStr[2] !== currentMinutes.toString().padStart(2, '0')[0]) {
+                animateFlip(cards.minuteTensFront, cards.minuteTensBack, timeStr[2]);
+            }
+            if (timeStr[3] !== currentMinutes.toString().padStart(2, '0')[1]) {
+                animateFlip(cards.minuteOnesFront, cards.minuteOnesBack, timeStr[3]);
+            }
+            if (timeStr[4] !== currentSeconds.toString().padStart(2, '0')[0]) {
+                animateFlip(cards.secondTensFront, cards.secondTensBack, timeStr[4]);
+            }
+            if (timeStr[5] !== currentSeconds.toString().padStart(2, '0')[1]) {
+                animateFlip(cards.secondOnesFront, cards.secondOnesBack, timeStr[5]);
+            }
+
             currentHours = hours;
             currentMinutes = minutes;
             currentSeconds = seconds;
         }
-        
-        function updateDigit(type, digits) {
-            const tensFront = document.getElementById(`${type}-tens-front`);
-            const tensBack = document.getElementById(`${type}-tens-back`);
-            const onesFront = document.getElementById(`${type}-ones-front`);
-            const onesBack = document.getElementById(`${type}-ones-back`);
-            
-            if (tensFront.textContent !== digits[0]) {
-                animateFlip(`${type}-tens-unit`, digits[0]);
-            }
-            if (onesFront.textContent !== digits[1]) {
-                animateFlip(`${type}-ones-unit`, digits[1]);
-            }
-        }
-        
-        function animateFlip(unitId, newValue) {
-            const unit = document.getElementById(unitId);
-            const front = unit.querySelector('.front');
-            const back = unit.querySelector('.back');
-            
+
+        function animateFlip(frontCard, backCard, newValue) {
+            const flipUnit = frontCard.parentElement;
+
             // Set the back card's value
-            back.textContent = newValue;
-            
+            backCard.textContent = newValue;
+
             // Add animation class
-            unit.style.transform = 'rotateX(180deg)';
-            
+            flipUnit.style.transform = 'rotateX(180deg)';
+
             // After animation completes, update front card and reset
             setTimeout(() => {
-                front.textContent = newValue;
-                unit.style.transform = 'rotateX(0deg)';
+                frontCard.textContent = newValue;
+                flipUnit.style.transform = 'rotateX(0deg)';
             }, 500);
         }
-        
-        // Quote functionality
+
+        function initClock() {
+            // Initialize NoSleep.js
+            var noSleep = new NoSleep();
+            var wakeLockEnabled = false;
+            var toggleEl = document.querySelector("#toggle");
+            toggleEl.addEventListener('click', function() {
+                if (!wakeLockEnabled) {
+                    noSleep.enable();
+                    wakeLockEnabled = true;
+                    toggleEl.value = "🔒";
+                } else {
+                    noSleep.disable();
+                    wakeLockEnabled = false;
+                    toggleEl.value = "🔓";
+                }
+            }, false);
+
+            // Start clock
+            updateClock();
+            setInterval(updateClock, 1000);
+        }
+
+        // Fullscreen toggle
+        function toggleFullScreen() {
+            var doc = window.document;
+            var docEl = doc.documentElement;
+            var requestFullScreen = docEl.requestFullscreen || docEl.mozRequestFullScreen || docEl.webkitRequestFullScreen || docEl.msRequestFullscreen;
+            var cancelFullScreen = doc.exitFullscreen || doc.mozCancelFullScreen || doc.webkitExitFullscreen || doc.msExitFullscreen;
+            if(!doc.fullscreenElement && !doc.mozFullScreenElement && !doc.webkitFullscreenElement && !doc.msFullscreenElement) {
+                requestFullScreen.call(docEl);
+            } else {
+                cancelFullScreen.call(doc);
+            }
+        }
+
+        // Simple quote functionality
         const quotes = [
             {
                 text: "Faith, mighty faith, the promise sees, And looks to God alone Laughs at impossibilities, And cries it shall be done.",
@@ -494,25 +456,17 @@
                 author: "Eleanor Roosevelt"
             }
         ];
-        
+
         document.getElementById('new-quote').addEventListener('click', function() {
             const randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
             document.getElementById('text').textContent = randomQuote.text;
             document.getElementById('author').textContent = randomQuote.author;
         });
-        
-        function initClock() {
-            // Setup wake lock if not mobile (already handled)
-            if (!isMobile) {
-                document.getElementById('toggle').addEventListener('click', function() {
-                    this.textContent = "Desktop Mode";
-                    this.style.backgroundColor = '#f44336';
-                });
-            }
-            
-            updateClock();
-            setInterval(updateClock, 1000);
-        }
+
+        // Handle orientation changes
+        window.addEventListener('resize', function() {
+            // Adjust layout if needed
+        });
     </script>
 </body>
 </html>
