@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="utf-8">
+    <title>Flip Clock</title>
+    <link rel="shortcut icon" type="image/png" href="https://prasanthk.com/clock/favicon/favicon.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://prasanthk.com/clock/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://prasanthk.com/clock/favicon/favicon-16x16.png">
+    <link rel="manifest" href="https://prasanthk.com/clock/favicon/site.webmanifest">
+    <link rel="author" href="#">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #111;
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+        }
+        
+        #container {
+            text-align: center;
+        }
+        
+        /* Flip Clock Styles */
+        .flip-clock {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        
+        .flip-unit-container {
+            display: block;
+            position: relative;
+            width: 140px;
+            height: 120px;
+            perspective: 300px;
+            margin: 0 5px;
+        }
+        
+        .flip-unit {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transform-style: preserve-3d;
+            transition: transform 0.5s;
+        }
+        
+        .flip-card {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            font-size: 80px;
+            font-weight: bold;
+            color: white;
+            background-color: #333;
+            border-radius: 10px;
+            backface-visibility: hidden;
+            overflow: hidden;
+        }
+        
+        .flip-card.front {
+            transform: rotateX(0deg);
+            z-index: 1;
+        }
+        
+        .flip-card.back {
+            transform: rotateX(180deg);
+        }
+        
+        .flip-card::before, .flip-card::after {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 50%;
+            background-color: #222;
+            z-index: -1;
+        }
+        
+        .flip-card::before {
+            top: 0;
+            border-radius: 10px 10px 0 0;
+        }
+        
+        .flip-card::after {
+            bottom: 0;
+            border-radius: 0 0 10px 10px;
+        }
+        
+        .flip-clock-divider {
+            display: flex;
+            align-items: center;
+            font-size: 80px;
+            margin: 0 5px;
+            color: #fff;
+        }
+        
+        .date-display {
+            font-size: 24px;
+            margin-bottom: 30px;
+            color: #ddd;
+        }
+        
+        /* Button styles */
+        #toggle, #goFS, #new-quote {
+            background: #333;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            margin: 5px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background 0.3s;
+        }
+        
+        #toggle:hover, #goFS:hover, #new-quote:hover {
+            background: #555;
+        }
+        
+        /* Quote box styles */
+        #quote-box {
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            background: #222;
+            border-radius: 10px;
+        }
+        
+        #text {
+            font-size: 20px;
+            font-style: italic;
+            margin-bottom: 10px;
+        }
+        
+        #author {
+            display: block;
+            text-align: right;
+            font-size: 16px;
+            color: #aaa;
+        }
+    </style>
+</head>
+<body onload="initClock()">
+    <div id="container">
+        <script src="https://unpkg.com/nosleep.js@0.12.0/dist/NoSleep.min.js"></script>
+
+        <input type="button" id="toggle" value="🔒">
+        <button id="goFS" onclick="toggleFullScreen()">F</button>
+
+        <script>
+            var noSleep = new NoSleep();
+            var wakeLockEnabled = false;
+            var toggleEl = document.querySelector("#toggle");
+            toggleEl.addEventListener('click', function() {
+                if (!wakeLockEnabled) {
+                    noSleep.enable();
+                    wakeLockEnabled = true;
+                    toggleEl.value = "✅";
+                } else {
+                    noSleep.disable();
+                    wakeLockEnabled = false;
+                    toggleEl.value = "🔒";
+                }
+            }, false);
+
+            function toggleFullScreen() {
+                var doc = window.document;
+                var docEl = doc.documentElement;
+                var requestFullScreen = docEl.requestFullscreen || docEl.mozRequestFullScreen || docEl.webkitRequestFullScreen || docEl.msRequestFullscreen;
+                var cancelFullScreen = doc.exitFullscreen || doc.mozCancelFullScreen || doc.webkitExitFullscreen || doc.msExitFullscreen;
+                if(!doc.fullscreenElement && !doc.mozFullScreenElement && !doc.webkitFullscreenElement && !doc.msFullscreenElement) {
+                    requestFullScreen.call(docEl);
+                } else {
+                    cancelFullScreen.call(doc);
+                }
+            }
+        </script>
+
+        <!-- Date Display -->
+        <div class="date-display">
+            <span id="dayname">Sunday</span>,
+            <span id="month">May</span>
+            <span id="daynum">25</span>,
+            <span id="year">2025</span>
+        </div>
+
+        <!-- Flip Clock -->
+        <div class="flip-clock">
+            <!-- Hours -->
+            <div class="flip-unit-container">
+                <div class="flip-unit">
+                    <div class="flip-card front" id="hour-tens-front">0</div>
+                    <div class="flip-card back" id="hour-tens-back">0</div>
+                </div>
+            </div>
+            <div class="flip-unit-container">
+                <div class="flip-unit">
+                    <div class="flip-card front" id="hour-ones-front">0</div>
+                    <div class="flip-card back" id="hour-ones-back">0</div>
+                </div>
+            </div>
+            
+            <div class="flip-clock-divider">:</div>
+            
+            <!-- Minutes -->
+            <div class="flip-unit-container">
+                <div class="flip-unit">
+                    <div class="flip-card front" id="minute-tens-front">0</div>
+                    <div class="flip-card back" id="minute-tens-back">0</div>
+                </div>
+            </div>
+            <div class="flip-unit-container">
+                <div class="flip-unit">
+                    <div class="flip-card front" id="minute-ones-front">0</div>
+                    <div class="flip-card back" id="minute-ones-back">0</div>
+                </div>
+            </div>
+            
+            <div class="flip-clock-divider">:</div>
+            
+            <!-- Seconds -->
+            <div class="flip-unit-container">
+                <div class="flip-unit">
+                    <div class="flip-card front" id="second-tens-front">0</div>
+                    <div class="flip-card back" id="second-tens-back">0</div>
+                </div>
+            </div>
+            <div class="flip-unit-container">
+                <div class="flip-unit">
+                    <div class="flip-card front" id="second-ones-front">0</div>
+                    <div class="flip-card back" id="second-ones-back">0</div>
+                </div>
+            </div>
+            
+            <!-- AM/PM -->
+            <div class="flip-clock-divider" id="period" style="font-size: 30px; margin-left: 15px;">AM</div>
+        </div>
+
+        <!-- Quote Box -->
+        <section id="quote-box">
+            <blockquote>
+                <p id="text">Faith, mighty faith, the promise sees, And looks to God alone Laughs at impossibilities, And cries it shall be done.</p>
+                <cite id="author">Charles Wesley</cite>
+            </blockquote>
+            <input id="new-quote" type="button" value="New Quote">
+        </section>
+    </div>
+
+    <script>
+        // Date and time variables
+        let currentHours = 0;
+        let currentMinutes = 0;
+        let currentSeconds = 0;
+        let currentPeriod = "AM";
+        
+        function updateClock() {
+            var now = new Date();
+            var dname = now.getDay(),
+                mo = now.getMonth(),
+                dnum = now.getDate(),
+                yr = now.getFullYear(),
+                hou = now.getHours(),
+                min = now.getMinutes(),
+                sec = now.getSeconds(),
+                pe = "AM";
+            
+            if (hou >= 12) {
+                pe = "PM";
+            }
+            if (hou == 0) {
+                hou = 12;
+            }
+            if (hou > 12) {
+                hou = hou - 12;
+            }
+            
+            Number.prototype.pad = function(digits) {
+                for (var n = this.toString(); n.length < digits; n = 0 + n);
+                return n;
+            }
+            
+            var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+            var week = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+            var ids = ["dayname", "month", "daynum", "year", "period"];
+            var values = [week[dname], months[mo], dnum.pad(2), yr, pe];
+            
+            for (var i = 0; i < ids.length; i++) {
+                document.getElementById(ids[i]).textContent = values[i];
+            }
+            
+            // Update flip clock
+            updateFlipClock(hou, min, sec);
+        }
+        
+        function updateFlipClock(hours, minutes, seconds) {
+            // Format time to always have 2 digits
+            const timeStr = hours.toString().padStart(2, '0') + 
+                            minutes.toString().padStart(2, '0') + 
+                            seconds.toString().padStart(2, '0');
+            
+            // Get all flip cards
+            const cards = {
+                hourTensFront: document.getElementById('hour-tens-front'),
+                hourTensBack: document.getElementById('hour-tens-back'),
+                hourOnesFront: document.getElementById('hour-ones-front'),
+                hourOnesBack: document.getElementById('hour-ones-back'),
+                minuteTensFront: document.getElementById('minute-tens-front'),
+                minuteTensBack: document.getElementById('minute-tens-back'),
+                minuteOnesFront: document.getElementById('minute-ones-front'),
+                minuteOnesBack: document.getElementById('minute-ones-back'),
+                secondTensFront: document.getElementById('second-tens-front'),
+                secondTensBack: document.getElementById('second-tens-back'),
+                secondOnesFront: document.getElementById('second-ones-front'),
+                secondOnesBack: document.getElementById('second-ones-back')
+            };
+            
+            // Only animate if the value has changed
+            if (timeStr[0] !== currentHours.toString().padStart(2, '0')[0]) {
+                animateFlip(cards.hourTensFront, cards.hourTensBack, timeStr[0]);
+            }
+            if (timeStr[1] !== currentHours.toString().padStart(2, '0')[1]) {
+                animateFlip(cards.hourOnesFront, cards.hourOnesBack, timeStr[1]);
+            }
+            if (timeStr[2] !== currentMinutes.toString().padStart(2, '0')[0]) {
+                animateFlip(cards.minuteTensFront, cards.minuteTensBack, timeStr[2]);
+            }
+            if (timeStr[3] !== currentMinutes.toString().padStart(2, '0')[1]) {
+                animateFlip(cards.minuteOnesFront, cards.minuteOnesBack, timeStr[3]);
+            }
+            if (timeStr[4] !== currentSeconds.toString().padStart(2, '0')[0]) {
+                animateFlip(cards.secondTensFront, cards.secondTensBack, timeStr[4]);
+            }
+            if (timeStr[5] !== currentSeconds.toString().padStart(2, '0')[1]) {
+                animateFlip(cards.secondOnesFront, cards.secondOnesBack, timeStr[5]);
+            }
+            
+            currentHours = hours;
+            currentMinutes = minutes;
+            currentSeconds = seconds;
+        }
+        
+        function animateFlip(frontCard, backCard, newValue) {
+            const flipUnit = frontCard.parentElement;
+            
+            // Set the back card's value
+            backCard.textContent = newValue;
+            
+            // Add animation class
+            flipUnit.style.transform = 'rotateX(180deg)';
+            
+            // After animation completes, update front card and reset
+            setTimeout(() => {
+                frontCard.textContent = newValue;
+                flipUnit.style.transform = 'rotateX(0deg)';
+            }, 500);
+        }
+        
+        function initClock() {
+            updateClock();
+            setInterval(updateClock, 1000);
+        }
+        
+        // Simple quote functionality
+        const quotes = [
+            {
+                text: "Faith, mighty faith, the promise sees, And looks to God alone Laughs at impossibilities, And cries it shall be done.",
+                author: "Charles Wesley"
+            },
+            {
+                text: "The only way to do great work is to love what you do.",
+                author: "Steve Jobs"
+            },
+            {
+                text: "In the middle of every difficulty lies opportunity.",
+                author: "Albert Einstein"
+            },
+            {
+                text: "Success is not final, failure is not fatal: It is the courage to continue that counts.",
+                author: "Winston Churchill"
+            },
+            {
+                text: "The future belongs to those who believe in the beauty of their dreams.",
+                author: "Eleanor Roosevelt"
+            }
+        ];
+        
+        document.getElementById('new-quote').addEventListener('click', function() {
+            const randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
+            document.getElementById('text').textContent = randomQuote.text;
+            document.getElementById('author').textContent = randomQuote.author;
+        });
+    </script>
+</body>
+</html>
