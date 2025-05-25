@@ -21,10 +21,10 @@
 
         @media (min-width: 768px) {
             :root {
-                --digit-width: 150px;
+                --digit-width: 120px;
                 --digit-height: 210px;
-                --digit-font-size: 220px;
-                --divider-font-size: 100px;
+                --digit-font-size: 180px;
+                --divider-font-size: 60px;
                 --date-font-size: 24px;
                 --controls-font-size: 16px;
             }
@@ -178,7 +178,7 @@
             padding: 15px;
             background: #222;
             border-radius: 8px;
-            font-size: calc(var(--date-font-size) * 0.7);
+            font-size: calc(var(--date-font-size) * 0.9);
         }
 
         #text {
@@ -197,7 +197,7 @@
         /* Landscape orientation adjustments */
         @media (max-height: 500px) and (orientation: landscape) {
             :root {
-                --digit-width: 15vh;
+                --digit-width: 24vh;
             }
 
             .flip-clock {
