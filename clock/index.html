@@ -1,77 +1,48 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="en">
 <head>
-    <meta charset="utf-8">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Flip Clock</title>
-    <link rel="shortcut icon" type="image/png" href="https://prasanthk.com/clock/favicon/favicon.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="https://prasanthk.com/clock/favicon/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="https://prasanthk.com/clock/favicon/favicon-16x16.png">
-    <link rel="manifest" href="https://prasanthk.com/clock/favicon/site.webmanifest">
-    <link rel="author" href="#">
+    <title>Fullscreen Flip Clock</title>
+    <script src="https://unpkg.com/nosleep.js@0.12.0/dist/NoSleep.min.js"></script>
     <style>
-        :root {
-            --digit-width: 20vw;
-            --digit-height: calc(var(--digit-width) * 1.75);
-            --digit-font-size: calc(var(--digit-width) * 1.5);
-            --divider-font-size: calc(var(--digit-width) * 0.5);
-            --date-font-size: calc(var(--digit-width) * 0.25);
-            --controls-font-size: calc(var(--digit-width) * 0.3);
-        }
-
-        @media (min-width: 768px) {
-            :root {
-                --digit-width: 120px;
-                --digit-height: 210px;
-                --digit-font-size: 180px;
-                --divider-font-size: 60px;
-                --date-font-size: 18px;
-                --controls-font-size: 18px;
-            }
-        }
-
         * {
+            margin: 0;
+            padding: 0;
             box-sizing: border-box;
         }
 
         body {
             font-family: Arial, sans-serif;
-            background-color: #111;
+            background-color: #000;
             color: #fff;
             display: flex;
             flex-direction: column;
-            align-items: center;
             justify-content: center;
-            min-height: 100vh;
-            margin: 0;
-            padding: 20px;
-            overflow: auto;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
             -webkit-tap-highlight-color: transparent;
+            touch-action: none;
         }
 
-        #container {
-            text-align: center;
-            width: 100%;
-            max-width: 1200px;
-        }
-
-        /* Flip Clock Styles */
         .flip-clock {
             display: flex;
             justify-content: center;
             align-items: center;
-            flex-wrap: wrap;
-            margin-bottom: 20px;
             width: 100%;
+            height: 100%;
+            padding: 10px;
         }
 
         .flip-unit-container {
-            display: block;
             position: relative;
-            width: var(--digit-width);
-            height: var(--digit-height);
+            width: 18%;
+            height: 60%;
+            max-width: 150px;
+            max-height: 250px;
             perspective: 600px;
-            margin: 0 2px;
+            margin: 0 0.5%;
         }
 
         .flip-unit {
@@ -89,11 +60,11 @@
             position: absolute;
             width: 100%;
             height: 100%;
-            font-size: var(--digit-font-size);
+            font-size: 10vw;
             font-weight: bold;
-            color: white;
-            background-color: #333;
-            border-radius: 8px;
+            color: #fff;
+            background-color: #222;
+            border-radius: 5px;
             backface-visibility: hidden;
             overflow: hidden;
             user-select: none;
@@ -113,234 +84,163 @@
             position: absolute;
             width: 100%;
             height: 50%;
-            background-color: #222;
+            background-color: #111;
             z-index: -1;
         }
 
         .flip-card::before {
             top: 0;
-            border-radius: 8px 8px 0 0;
+            border-radius: 5px 5px 0 0;
         }
 
         .flip-card::after {
             bottom: 0;
-            border-radius: 0 0 8px 8px;
+            border-radius: 0 0 5px 5px;
         }
 
-        .flip-clock-divider {
+        .flip-divider {
             display: flex;
             align-items: center;
-            font-size: var(--divider-font-size);
-            margin: 0 2px;
+            justify-content: center;
+            font-size: 6vw;
             color: #fff;
-            height: var(--digit-height);
-            padding-bottom: calc(var(--digit-height) * 0.1);
+            height: 60%;
+            padding-bottom: -15%;
+            margin: 0 1%;
         }
 
         .date-display {
-            font-size: var(--date-font-size);
-            margin-bottom: 20px;
-            color: #ddd;
-            width: 100%;
-            text-align: center;
-        }
-
-        /* Button styles */
-        .controls {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            margin: 10px 0;
-            width: 100%;
-        }
-
-        #toggle, #goFS, #new-quote {
-            background: #333;
-            color: white;
-            border: none;
-            padding: 10px 15px;
-            margin: 5px;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: var(--controls-font-size);
-            transition: background 0.3s;
-            min-width: 60px;
-        }
-
-        #toggle:hover, #goFS:hover, #new-quote:hover {
-            background: #555;
-        }
-
-        /* Quote box styles */
-        #quote-box {
-            max-width: 80%;
-            margin: 20px auto;
-            padding: 15px;
-            background: #222;
-            border-radius: 8px;
-            font-size: calc(var(--date-font-size) * 0.9);
-        }
-
-        #text {
-            font-style: italic;
-            margin-bottom: 10px;
-            line-height: 1.4;
-        }
-
-        #author {
-            display: block;
-            text-align: right;
+            position: absolute;
+            top: 60px;
+            font-size: 4vw;
             color: #aaa;
-            font-size: 0.9em;
+            text-align: center;
+            width: 100%;
         }
 
-        /* Landscape orientation adjustments */
-        @media (max-height: 500px) and (orientation: landscape) {
-            :root {
-                --digit-width: 24vh;
+        @media (min-width: 768px) {
+            .flip-card {
+                font-size: 180px;
             }
-
-            .flip-clock {
-                margin-bottom: 10px;
+            .flip-divider {
+                font-size: 140px;
             }
-
-            #quote-box {
-                display: none;
+            .date-display {
+                font-size: 24px;
             }
         }
     </style>
 </head>
-<body onload="initClock()">
-    <div id="container">
-        <script src="https://unpkg.com/nosleep.js@0.12.0/dist/NoSleep.min.js"></script>
-
-        <div class="controls">
-            <input type="button" id="toggle" value="🔓" aria-label="Toggle screen lock">
-            <button id="goFS" onclick="toggleFullScreen()" aria-label="Toggle fullscreen">⛶</button>
+<body>
+    <div class="flip-clock">
+        <!-- Hours -->
+        <div class="flip-unit-container">
+            <div class="flip-unit">
+                <div class="flip-card front" id="hour-tens-front">0</div>
+                <div class="flip-card back" id="hour-tens-back">0</div>
+            </div>
         </div>
-
-        <!-- Date Display -->
-        <div class="date-display">
-            <span id="dayname">Sunday</span>,
-            <span id="month">May</span>
-            <span id="daynum">25</span>,
-            <span id="year">2025</span>
+        <div class="flip-unit-container">
+            <div class="flip-unit">
+                <div class="flip-card front" id="hour-ones-front">0</div>
+                <div class="flip-card back" id="hour-ones-back">0</div>
+            </div>
         </div>
-
-        <!-- Flip Clock -->
-        <div class="flip-clock">
-            <!-- Hours -->
-            <div class="flip-unit-container">
-                <div class="flip-unit">
-                    <div class="flip-card front" id="hour-tens-front">0</div>
-                    <div class="flip-card back" id="hour-tens-back">0</div>
-                </div>
+        
+        <div class="flip-divider">:</div>
+        
+        <!-- Minutes -->
+        <div class="flip-unit-container">
+            <div class="flip-unit">
+                <div class="flip-card front" id="minute-tens-front">0</div>
+                <div class="flip-card back" id="minute-tens-back">0</div>
             </div>
-            <div class="flip-unit-container">
-                <div class="flip-unit">
-                    <div class="flip-card front" id="hour-ones-front">0</div>
-                    <div class="flip-card back" id="hour-ones-back">0</div>
-                </div>
-            </div>
-
-            <div class="flip-clock-divider">:</div>
-
-            <!-- Minutes -->
-            <div class="flip-unit-container">
-                <div class="flip-unit">
-                    <div class="flip-card front" id="minute-tens-front">0</div>
-                    <div class="flip-card back" id="minute-tens-back">0</div>
-                </div>
-            </div>
-            <div class="flip-unit-container">
-                <div class="flip-unit">
-                    <div class="flip-card front" id="minute-ones-front">0</div>
-                    <div class="flip-card back" id="minute-ones-back">0</div>
-                </div>
-            </div>
-
-            <div class="flip-clock-divider">:</div>
-
-            <!-- Seconds -->
-            <div class="flip-unit-container">
-                <div class="flip-unit">
-                    <div class="flip-card front" id="second-tens-front">0</div>
-                    <div class="flip-card back" id="second-tens-back">0</div>
-                </div>
-            </div>
-            <div class="flip-unit-container">
-                <div class="flip-unit">
-                    <div class="flip-card front" id="second-ones-front">0</div>
-                    <div class="flip-card back" id="second-ones-back">0</div>
-                </div>
-            </div>
-
-            <!-- AM/PM -->
-            <div class="flip-clock-divider" id="period" style="font-size: calc(var(--divider-font-size) * 0.6); margin-left: 8px;">AM</div>
         </div>
-
-        <!-- Quote Box -->
-        <section id="quote-box">
-            <blockquote>
-                <p id="text">Faith, mighty faith, the promise sees, And looks to God alone Laughs at impossibilities, And cries it shall be done.</p>
-                <cite id="author">Charles Wesley</cite>
-            </blockquote>
-            <input id="new-quote" type="button" value="New Quote">
-        </section>
+        <div class="flip-unit-container">
+            <div class="flip-unit">
+                <div class="flip-card front" id="minute-ones-front">0</div>
+                <div class="flip-card back" id="minute-ones-back">0</div>
+            </div>
+        </div>
+        
+        <div class="flip-divider">:</div>
+        
+        <!-- Seconds -->
+        <div class="flip-unit-container">
+            <div class="flip-unit">
+                <div class="flip-card front" id="second-tens-front">0</div>
+                <div class="flip-card back" id="second-tens-back">0</div>
+            </div>
+        </div>
+        <div class="flip-unit-container">
+            <div class="flip-unit">
+                <div class="flip-card front" id="second-ones-front">0</div>
+                <div class="flip-card back" id="second-ones-back">0</div>
+            </div>
+        </div>
     </div>
 
+    <div class="date-display" id="date"></div>
+
     <script>
+        // Enable screen lock immediately
+        const noSleep = new NoSleep();
+        noSleep.enable();
+        
+        // Enter fullscreen immediately
+        function enterFullscreen() {
+            const element = document.documentElement;
+            if (element.requestFullscreen) {
+                element.requestFullscreen();
+            } else if (element.mozRequestFullScreen) {
+                element.mozRequestFullScreen();
+            } else if (element.webkitRequestFullscreen) {
+                element.webkitRequestFullscreen();
+            } else if (element.msRequestFullscreen) {
+                element.msRequestFullscreen();
+            }
+        }
+        
+        // Try to enter fullscreen when user interacts with page
+        document.addEventListener('click', enterFullscreen, { once: true });
+        
         // Date and time variables
         let currentHours = 0;
         let currentMinutes = 0;
         let currentSeconds = 0;
-        let currentPeriod = "AM";
-
+        
         function updateClock() {
-            var now = new Date();
-            var dname = now.getDay(),
-                mo = now.getMonth(),
-                dnum = now.getDate(),
-                yr = now.getFullYear(),
-                hou = now.getHours(),
-                min = now.getMinutes(),
-                sec = now.getSeconds(),
-                pe = "AM";
-
-            if (hou >= 12) {
-                pe = "PM";
-            }
-            if (hou == 0) {
-                hou = 12;
-            }
-            if (hou > 12) {
-                hou = hou - 12;
-            }
-
-            Number.prototype.pad = function(digits) {
-                for (var n = this.toString(); n.length < digits; n = 0 + n);
-                return n;
-            }
-
-            var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-            var week = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-            var ids = ["dayname", "month", "daynum", "year", "period"];
-            var values = [week[dname], months[mo], dnum.pad(2), yr, pe];
-
-            for (var i = 0; i < ids.length; i++) {
-                document.getElementById(ids[i]).textContent = values[i];
-            }
-
+            const now = new Date();
+            const dname = now.getDay();
+            const mo = now.getMonth();
+            const dnum = now.getDate();
+            const yr = now.getFullYear();
+            let hou = now.getHours();
+            const min = now.getMinutes();
+            const sec = now.getSeconds();
+            
+            // Format hours for 12-hour clock
+            const pe = hou >= 12 ? "PM" : "AM";
+            hou = hou % 12 || 12;
+            
+            // Update date display
+            const months = ["January", "February", "March", "April", "May", "June", 
+                           "July", "August", "September", "October", "November", "December"];
+            const week = ["Sunday", "Monday", "Tuesday", "Wednesday", 
+                          "Thursday", "Friday", "Saturday"];
+            document.getElementById('date').textContent = 
+                `${week[dname]}, ${months[mo]} ${dnum}, ${yr} ${pe}`;
+            
             // Update flip clock
             updateFlipClock(hou, min, sec);
         }
-
+        
         function updateFlipClock(hours, minutes, seconds) {
             // Format time to always have 2 digits
-            const timeStr = hours.toString().padStart(2, '0') +
-                            minutes.toString().padStart(2, '0') +
-                            seconds.toString().padStart(2, '0');
-
+            const timeStr = hours.toString().padStart(2, '0') + 
+                          minutes.toString().padStart(2, '0') + 
+                          seconds.toString().padStart(2, '0');
+            
             // Get all flip cards
             const cards = {
                 hourTensFront: document.getElementById('hour-tens-front'),
@@ -356,7 +256,7 @@
                 secondOnesFront: document.getElementById('second-ones-front'),
                 secondOnesBack: document.getElementById('second-ones-back')
             };
-
+            
             // Only animate if the value has changed
             if (timeStr[0] !== currentHours.toString().padStart(2, '0')[0]) {
                 animateFlip(cards.hourTensFront, cards.hourTensBack, timeStr[0]);
@@ -376,96 +276,38 @@
             if (timeStr[5] !== currentSeconds.toString().padStart(2, '0')[1]) {
                 animateFlip(cards.secondOnesFront, cards.secondOnesBack, timeStr[5]);
             }
-
+            
             currentHours = hours;
             currentMinutes = minutes;
             currentSeconds = seconds;
         }
-
+        
         function animateFlip(frontCard, backCard, newValue) {
             const flipUnit = frontCard.parentElement;
-
+            
             // Set the back card's value
             backCard.textContent = newValue;
-
+            
             // Add animation class
             flipUnit.style.transform = 'rotateX(180deg)';
-
+            
             // After animation completes, update front card and reset
             setTimeout(() => {
                 frontCard.textContent = newValue;
                 flipUnit.style.transform = 'rotateX(0deg)';
             }, 500);
         }
-
-        function initClock() {
-            // Initialize NoSleep.js
-            var noSleep = new NoSleep();
-            var wakeLockEnabled = false;
-            var toggleEl = document.querySelector("#toggle");
-            toggleEl.addEventListener('click', function() {
-                if (!wakeLockEnabled) {
-                    noSleep.enable();
-                    wakeLockEnabled = true;
-                    toggleEl.value = "🔒";
-                } else {
-                    noSleep.disable();
-                    wakeLockEnabled = false;
-                    toggleEl.value = "🔓";
-                }
-            }, false);
-
-            // Start clock
-            updateClock();
-            setInterval(updateClock, 1000);
-        }
-
-        // Fullscreen toggle
-        function toggleFullScreen() {
-            var doc = window.document;
-            var docEl = doc.documentElement;
-            var requestFullScreen = docEl.requestFullscreen || docEl.mozRequestFullScreen || docEl.webkitRequestFullScreen || docEl.msRequestFullscreen;
-            var cancelFullScreen = doc.exitFullscreen || doc.mozCancelFullScreen || doc.webkitExitFullscreen || doc.msExitFullscreen;
-            if(!doc.fullscreenElement && !doc.mozFullScreenElement && !doc.webkitFullscreenElement && !doc.msFullscreenElement) {
-                requestFullScreen.call(docEl);
-            } else {
-                cancelFullScreen.call(doc);
-            }
-        }
-
-        // Simple quote functionality
-        const quotes = [
-            {
-                text: "Faith, mighty faith, the promise sees, And looks to God alone Laughs at impossibilities, And cries it shall be done.",
-                author: "Charles Wesley"
-            },
-            {
-                text: "The only way to do great work is to love what you do.",
-                author: "Steve Jobs"
-            },
-            {
-                text: "In the middle of every difficulty lies opportunity.",
-                author: "Albert Einstein"
-            },
-            {
-                text: "Success is not final, failure is not fatal: It is the courage to continue that counts.",
-                author: "Winston Churchill"
-            },
-            {
-                text: "The future belongs to those who believe in the beauty of their dreams.",
-                author: "Eleanor Roosevelt"
-            }
-        ];
-
-        document.getElementById('new-quote').addEventListener('click', function() {
-            const randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
-            document.getElementById('text').textContent = randomQuote.text;
-            document.getElementById('author').textContent = randomQuote.author;
-        });
-
-        // Handle orientation changes
-        window.addEventListener('resize', function() {
-            // Adjust layout if needed
+        
+        // Start clock
+        updateClock();
+        setInterval(updateClock, 1000);
+        
+        // Prevent any touch scrolling
+        document.addEventListener('touchmove', (e) => e.preventDefault(), { passive: false });
+        
+        // Try to enter fullscreen on load (may require user gesture on some browsers)
+        window.addEventListener('load', () => {
+            setTimeout(enterFullscreen, 100);
         });
     </script>
 </body>
